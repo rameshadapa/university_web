@@ -1,0 +1,225 @@
+001    /*
+002     * Morena 7 - Image Acquisition Framework
+003     *
+004     * Copyright (c) 1999-2011 Gnome spol. s r.o. All Rights Reserved.
+005     *
+006     * This software is the confidential and proprietary information of
+007     * Gnome spol. s r.o. You shall not disclose such Confidential
+008     * Information and shall use it only in accordance with the terms
+009     * of the license agreement you entered into with Gnome.
+010     */
+011    
+012    import java.awt.image.BufferedImage;
+013    import java.io.File;
+014    import java.io.FileOutputStream;
+015    import java.util.ArrayList;
+016    import java.util.Arrays;
+017    import java.util.Date;
+018    import java.util.List;
+019    import java.util.logging.Level;
+020    
+021    import javax.imageio.ImageIO;
+022    
+023    import eu.gnome.morena.Camera;
+024    import eu.gnome.morena.Configuration;
+025    import eu.gnome.morena.Device;
+026    import eu.gnome.morena.Manager;
+027    import eu.gnome.morena.Scanner;
+028    
+029    /**
+030     * MorenaExample demonstrates basic use of the Morena Framework in an
+031     * application environment. Process of scanning is asynchronous and application
+032     * is provided with the file containing an image.
+033     * 
+034     * Requirements: 1. Java 1.5 or newer 2. Morena7 for image acquisition
+035     * 
+036     */
+037    
+038    public class MorenaExample {
+039      static Manager manager;
+040    
+041      public static void main(String args[]) {
+042        MorenaExample example = new MorenaExample();
+043        System.out.println("MorenaExample("+Arrays.toString(args)+") ... started at "+new Date()); // Loads native library and initialize logging
+044        try {
+045    //      Configuration.setLogLevel(Level.ALL);               // setting max log detail
+046    //      Configuration.addDeviceType(".*fficejet.*", true);  // workaround for HP scanners
+047          manager=Manager.getInstance();
+048          if (args.length == 0)
+049            example.simpleScan();
+050          else if (args[0].equalsIgnoreCase("batch"))
+051            example.batchScan();
+052        } catch (Throwable ex) {
+053          ex.printStackTrace();
+054        }
+055        finally {
+056          manager.close();
+057        }
+058        System.out.println("Finished.");
+059      }
+060    
+061      /**
+062       * This example method shows how to scan single image from selected device and
+063       * default functional unit (flatbed)
+064       * 
+065       * @throws Exception
+066       */
+067      private void simpleScan() throws Exception {
+068        // Selecting a device (1st device available is selected)
+069        List<? extends Device> devices = manager.listDevices();
+070        if (devices.size() > 0) {
+071          Device device = devices.get(0);
+072    
+073          if (device != null) {
+074    
+075            // for scanner device set the scanning parameters
+076            if (device instanceof Scanner) {
+077              Scanner scanner = (Scanner) device;
+078              scanner.setMode(Scanner.RGB_8);
+079              scanner.setResolution(75);
+080              scanner.setFrame(0, 0, 622, 874);   // A4 8.3 x 11.7 ( 622 x 877 at 75 DPI) (for Lide110 - 622 x 874)
+081            } else
+082            if (device instanceof Camera) {
+083              // Camera specific settings
+084            }
+085    
+086            // start scan using default (0) functional unit
+087            BufferedImage bimage = SynchronousHelper.scanImage(device);
+088            System.out.println("scanned image info: size=(" + bimage.getWidth() + ", " + bimage.getHeight() + ")   bit mode=" + bimage.getColorModel().getPixelSize());
+089            // do image processing if necessary
+090            // ...
+091            Thread.sleep(30000);
+092          }
+093        } else
+094            System.out.println("No device connected!!!");
+095      }
+096    
+097      
+098      /**
+099       * This example method shows how to scan multiple images from selected device with ADF (automatic document feeder).
+100       * If ADF unit is not found or recognized the default unit (0) is used.
+101       * Scanned image files are converted to jpeg format and placed in temporary directory (System.getProperty("java.io.tmpdir"))
+102       * 
+103       * @throws Exception
+104       */
+105      private void batchScan() throws Exception {
+106        List<? extends Device> devices = manager.listDevices();
+107        List<File> filesToDelete = new ArrayList<File>();
+108        if (devices.size() > 0) {
+109          Device device = devices.get(0);
+110    
+111          if (device != null) {
+112    
+113            // for scanner device set the scanning parameters
+114            if (device instanceof Scanner) {
+115              Scanner scanner = (Scanner) device;
+116              scanner.setMode(Scanner.RGB_8);
+117              scanner.setResolution(200);
+118              // find feeder unit
+119              int feederUnit=scanner.getFeederFunctionalUnit();
+120              System.out.println("Feeder unit : "+(feederUnit>=0?feederUnit:"none found - trying 0"));
+121              if (feederUnit<0)
+122                feederUnit=0; // 0 designates a default unit
+123              if (scanner.isDuplexSupported())
+124                scanner.setDuplexEnabled(true);
+125    
+126              int pageNo=1;
+127              ScanSession session=new ScanSession();
+128              // start batch scan
+129              try {
+130                  session.startSession(device, feederUnit);
+131                  File file=null; 
+132                  while (null!=(file=session.getImageFile())) {
+133                    filesToDelete.add(file);
+134                    // image processing - image file is transformed to JPEG format
+135                    BufferedImage image = ImageIO.read(file);
+136                    System.out.println("scanned image "+file.getPath()+" : size=(" + image.getWidth() + ", " + image.getHeight() + ")   bit mode=" + image.getColorModel().getPixelSize());
+137                    if (!"jpg".equalsIgnoreCase(ScanSession.getExt(file))) { // convert to jpeg if not already in jpeg format
+138                      File jpgFile=new File(file.getParent(), "Morena_example_img_"+(pageNo++)+".jpg");
+139                      FileOutputStream fout=new FileOutputStream(jpgFile);
+140                      ImageIO.write(image, "jpeg", fout);
+141                      fout.close();
+142                      filesToDelete.add(jpgFile);
+143                    }
+144                  }
+145    
+146              } catch (Exception ex) { // check if error is related to empty ADF
+147                if (session.isEmptyFeeder())
+148                  System.out.println("No more sheets in the document feeder");
+149                else
+150                  ex.printStackTrace();
+151              }
+152            }
+153          }
+154          System.out.println("Scanning completed - check the images ... waiting 120s");
+155          Thread.sleep(120000);
+156    
+157          // all files are deleted on the exit
+158          for (File file : filesToDelete)
+159          { file.deleteOnExit();
+160          }
+161        } else
+162            System.out.println("No device connected!!!");
+163      }
+164      
+165    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

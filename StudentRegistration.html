@@ -1,0 +1,91 @@
+<html>
+<head>
+<script type="text/javascript" src="jquery-1.8.2.js"></script>
+<script type="text/javascript" src="mfs100-9.0.2.6.js"></script>
+<script type="text/javascript" src="validate.js"></script>
+
+<style>
+table{
+	color:#FFFFFF;
+}
+
+button {
+    background-color: #00468C;
+    border: none;
+    color: white;
+    padding: 10px 70px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 10px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+button:hover{background-color:#D5EAFF;
+color:#333;}
+
+</style>
+</head>
+<body bgcolor="#000035">
+<form method="post" id="student_registration" action="./student_submit.php" name="student_registration">
+    
+    <table cellpadding="2" width="20%" bgcolor="#00006A" align="center"
+	cellspacing="2" border="3">
+
+	<tr>
+		<td colspan=2>
+		<center><font size=4><b>Student Registration Form</b></font></center>
+		</td>
+	</tr>
+
+	<tr>
+		<td>First Name</td>
+		<td><input type=text name="firstname" id="firstname" size="30"></td>
+	</tr>
+
+	<tr>
+		<td>Last Name</td>
+		<td><input type="text" name="lastname" id="lastname"
+			size="30"></td>
+	</tr>
+
+	<tr>
+		<td>Gender</td>
+		<td><input type="radio" name="sex" value="Male" size="10">Male
+		<input type="radio" name="sex" value="Female" size="10">Female</td>
+	</tr>
+
+	<tr>
+		<td>EmailId</td>
+		<td><input type="text" name="emailid" id="emailid" size="30"></td>
+	</tr>
+
+	<tr>
+		<td>DOB</td>
+		<td><input type="text" name="dob" id="dob" size="30"></td>
+	</tr>
+
+	<tr>
+		<td>MobileNo</td>
+		<td><input type="text" name="mobileno" id="mobileno" size="30"></td>
+	</tr>
+	<tr>
+	      <td>Photo</td>
+		<td ><input type="file" name="photo" id="photo" size="30"></td>
+	</tr>
+	<tr>
+	  <td>ScanFingerPrints</td>
+	  <td>
+		<img name="imgFinger" id="imgFinger" width="145px" height="188px" alt="Finger image." />
+		<input type="hidden" name="SF" id="SF" size="30">
+      	<button class="btn btn-primary" onclick="return Capture();"><strong>scan</strong></button>
+      </td>
+	  </tr>
+	<tr>
+	  <td><input type="reset"></td>
+	  <td colspan="2"><input type="button" value="Submit Form" onclick="return(validate());"/></td>
+	</tr>
+  </table>
+</form>
+</body>
+</html>

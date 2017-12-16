@@ -1,0 +1,270 @@
+<html>
+
+<head>
+<script type="text/javascript">
+function validate()
+{ 
+   
+  
+   
+   if( document.tutorial.Course.value == "-1" )
+   {
+     alert( "Please provide your Course!" );
+    
+     return false;
+   }   
+   if( document.tutorial.District.value == "-1" )
+   {
+     alert( "Please provide your Select Distric!" );
+    
+     return false;
+   }   
+   if( document.tutorial.State.value == "-1" )
+   {
+     alert( "Please provide your Select State!" );
+     
+     return false;
+   }
+
+
+
+}
+</script>
+
+<style>
+    #selectedFiles img {
+        max-width: 125px;
+        max-height: 125px;
+        float: left;
+        margin-bottom:10px;
+    }
+</style>
+
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+iframe{
+	alignment-adjust:central;}
+body {
+    margin: 0;
+}
+
+/* Create three equal columns that floats next to each other */
+.column {
+    float: left;
+    width: 33.33%;
+    padding: 10px;
+    height: 140px;
+	color:#FFFFFF; /* Should be removed. Only for demonstration */
+}
+
+
+
+article {
+    background-color:#000035;
+   width:98%;
+
+   
+}
+
+
+.flex-container{
+	width: 90%;
+	min-height: 70px;
+	margin: 0 auto;
+	display: -webkit-flex; /* Safari */		
+	display: flex; /* Standard syntax */
+    color:#FFFFFF;
+
+}
+
+
+
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+section{
+	width:100%;
+	float:left;
+	background-color:#555555;
+}
+
+
+.content {
+    max-width:98%;
+    margin: auto;
+    background: #555555;
+    padding: 5px;
+	max-height:100%;
+}
+.flex-container1{
+	max-width: 98%;
+	min-height: 90%;
+	margin: 0 auto;
+	display: -webkit-flex; /* Safari */
+	display: flex; /* Standard syntax */
+	color:#FFFFFF;
+	background-color: #000035;
+	font-size: 14px;
+    top:30px;    
+
+
+}
+
+
+
+
+
+
+.content .row .column h2 {
+	font-size: 12px;
+}
+img
+{
+	border-radius:90%;
+}
+
+
+
+
+.video-container {
+	position:relative;
+	padding-bottom:50.25%;
+	padding-top:2px;
+	height:50%;
+	width:100%;
+	overflow:hidden;
+}
+
+.video-container iframe, .video-container object, .video-container embed {
+	position:absolute;
+	top:26px;
+	left:2px;
+	width:100%;
+	height:600px;
+	float:left;
+}
+
+select{
+	width:150px;
+}
+
+
+#apDiv1 {
+	position:absolute;
+	width:40%;
+	height:20%;
+	z-index:1;
+	left: 298px;
+	top: 102px;
+	background-color: #0000FF;
+}
+table{
+	color: #FFF;
+}
+</style>
+
+<script type="text/javascript" src="validate.js"></script>
+<script type="text/javascript" src="mfiles.js"></script>
+</head>
+<body bgcolor="#000035">
+
+<div class="flex-container1">
+
+<div id="apDiv1">
+
+
+
+
+<form action="#" name="tutorial" onSubmit="return(validate());" post>
+    
+    <table width="100%" height="100%" border="3" align="center" cellpadding="2"
+	cellspacing="2" bgcolor="#0000FF">
+
+	<tr>
+		<td colspan=2>
+		<center>
+		  <font size=4><b>Upload Student Material </b></font>
+		</center>
+		</td>
+	</tr>
+
+	<tr>
+	  <td>SelectBranch</td>
+	  <td><select name="utype">
+	    <option value="-1">select..</option>
+	    <option value="admin">Admin</option>
+	    <option value="co-ordinator">Co-ordinator</option>
+      </select></td>
+	  </tr>
+	<tr>
+		<td>Year</td>
+		<td><select name="City">
+			 <option value="-1" selected>select..</option>
+			<option value="New Delhi">NEW DELHI</option>
+			<option value="Mumbai">MUMBAI</option>
+			<option value="Goa">GOA</option>
+			<option value="Patna">PATNA</option>
+		</select></td>
+	</tr>
+
+	<tr>
+		<td>Subject</td>
+		<td><select name="Course">
+			<option value="-1" selected>select..</option>
+			<option value="B.Tech">B.TECH</option>
+			<option value="MCA">MCA</option>
+			<option value="MBA">MBA</option>
+			<option value="BCA">BCA</option>
+		</select></td>
+	</tr>
+
+	<tr>
+	  <td>UploadFiles</td>
+	  <td ><input type="file" id="files" name="files" multiple accept="img/*"><br/>
+
+                    
+      </td>
+	  </tr>
+      
+      <tr>
+        <td>UplodedFileList
+        <td><div id="selectedFiles"></div></td></tr>
+      
+      
+      
+      
+	<tr>
+	  <td><input type="reset"></td>
+	  <td colspan="4"><input type="submit" value="Submit Form" /></td>
+	  </tr>
+  </table>
+</form>
+
+
+
+
+
+
+
+
+</div>
+
+</div>
+
+
+
+
+
+
+
+</body>
+</html>

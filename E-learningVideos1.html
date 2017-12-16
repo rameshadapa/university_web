@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+
+
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+iframe{
+	alignment-adjust:central;}
+body {
+    margin: 0;
+}
+
+/* Create three equal columns that floats next to each other */
+.column {
+    float: left;
+    width: 98%;
+    padding: 50px;
+    height: 5px;
+	color:#FFFFFF; /* Should be removed. Only for demonstration */
+}
+
+
+
+article {
+    background-color:#000035;
+   width:90%;
+
+height:30%;   
+}
+
+
+.flex-container{
+	top:25;
+	width: 90%;
+	min-height: 70px;
+	margin: 0 auto;
+	display: -webkit-flex; /* Safari */		
+	display: flex; /* Standard syntax */
+    color:#FFFFFF;
+
+}
+
+
+
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+section{
+	width:98%;
+	height:80px;
+	float:right;
+	background-color: #00356A;
+}
+
+
+.content {
+    max-width:98%;
+    margin: auto;
+    background: #555555;
+    padding: 5px;
+	max-height:80%;
+}
+.flex-container1{
+	max-width: 98%;
+	min-height: 50%;
+	margin: 0 auto;
+	display: -webkit-flex; /* Safari */
+	display: flex; /* Standard syntax */
+	color:#FFFFFF;
+	background-color: #000035;
+	font-size: 14px;
+}
+
+
+
+
+
+
+.content .row .column h2
+	font-size: 12px;
+}
+img
+{
+	border-radius:90%;
+}
+
+
+
+
+.video-container {
+	position:relative;
+	padding-bottom:55.25%;
+	padding-top:7px;
+	height:98%;
+	width:98%;
+	overflow:hidden;
+	background-color:#000035;
+    
+
+}
+
+ iframe {
+	position:absolute;
+	top:112px;
+	left:14px;
+	width:98%;
+	height:672px;
+	float:left;
+}
+
+select{
+	width:150px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.video-container section form label strong {
+	color: #FFF;
+}
+.c {
+	color: #FFF;
+}
+.c {
+	color: #FFF;
+}
+f {
+	color: #FFF;
+}
+strong {
+	color: #FFF;
+}
+.content .row .column p {
+	font-size: 14px;
+}
+.content .row .column form {
+	font-size: 14px;
+}
+
+
+button {
+    background-color: #00468C;
+    border: none;
+    color: white;
+    padding: 5px 50px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+
+
+</style>
+<script src="SpryAssets/SpryMenuBar.js" type="text/javascript"></script>
+<link href="SpryAssets/SpryMenuBarHorizontal.css" rel="stylesheet" type="text/css">
+<link href="button.css" rel="stylesheet" type="text/css">
+
+</head>
+<body>
+<div class="content">
+  <div class="row">
+  
+
+  
+  
+  
+  <div class="column" style="background-color:#000035;">
+
+
+<form name="form1" method="post" action="">
+<a href="#" class="myButton">BACK </a>
+
+
+  <label for="branch3"><strong>SelectBranch</strong></label>
+  <select name="branch" id="branch3">
+    <option value="-1">select</option>
+    <option value="MCA">MCA</option>
+    <option value="Btech">Btech</option>
+    <option value="Bsc">Bsc</option>
+  </select>
+
+  <label for="year"><strong>SelectYear</strong></label>
+  <select name="year" id="year">
+    <option value="-1">select</option>
+    <option value="1stYear">1stYear</option>
+    <option value="2ndYear">2ndYear</option>
+    <option value="3rdYear">3rdYear</option>
+  </select>
+<label for="subject"><strong>SelectSubject</strong></label>
+  <select name="subject" id="subject">
+    <option value="-1">select</option>
+    <option value="s1">s1</option>
+    <option value="s2">s2</option>
+    <option value="s3">s3</option>
+  </select>
+<label for="ftype"><strong>FileType</strong></label>
+  <select name="Ftype" id="Ftype">
+    <option value="-1">select</option>
+    <option value="video">video</option>
+    <option value="audio">audio</option>
+    <option value="pdf">PDF</option>
+  </select>
+
+
+
+
+  <input type="submit" name="button" id="button" value="Submit">
+
+
+</form>
+<p>&nbsp;</p>
+  </div>
+
+</div>
+
+
+   
+  <iframe src="https://www.youtube.com/embed/o-BBc2yayV8?autoplay=1" name="myframe">
+         Sorry your browser does not support inline frames.
+    </iframe>
+  
+ 
+ 
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+</body>
+</html>

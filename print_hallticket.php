@@ -1,0 +1,1 @@
+<h2>Your hallticket should display here.</h2>
