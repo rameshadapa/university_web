@@ -69,4 +69,16 @@ function get_user()
     }
     return null;
 }
+
+function random_string()
+{
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $randomstring = '';
+    for($i=0; $i<25; $i++)
+    {
+        $randomstring .= $characters[rand(0, strlen($characters))];
+    }
+
+    return $randomstring;
+}
 ?>

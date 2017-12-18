@@ -1,180 +1,156 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<title>Creating Two Equal Height Columns Using CSS</title>
-<style type="text/css">
-img {
-    border-radius: 90px;
-	
+<style>
+a:link, a:visited {
+    background-color: #f44336;
+    color: white;
+    padding: 14px 75px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
 }
 
-.flex-container1{
-	width: 90%;
-	min-height: 500px;
-	margin: 0 auto;
-	display: -webkit-flex; /* Safari */		
-	display: flex; /* Standard syntax */
-    color:#FFFFFF;
-	background-color: #000035;
 
+a:hover, a:active {
+    background-color: red;
+}
+</style>
+
+
+
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+iframe{
+	alignment-adjust:central;}
+body {
+    margin: 0;
+}
+
+/* Create three equal columns that floats next to each other */
+.column {
+    float: left;
+    width: 33.33%;
+    padding: 10px;
+    height: 140px;
+	color:#FFFFFF; /* Should be removed. Only for demonstration */
+}
+
+
+
+article {
+    background-color:#000035;
+   width:98%;
+
+   
 }
 
 
 .flex-container{
 	width: 90%;
-	min-height: 200px;
+	min-height: 100px;
 	margin: 0 auto;
 	display: -webkit-flex; /* Safari */		
 	display: flex; /* Standard syntax */
     color:#FFFFFF;
 
 }
-.flex-container .column{
-	padding: 10px;
-	background: #000035;
-	-webkit-flex: 1; /* Safari */
-	-ms-flex: 1; /* IE 10 */
-	flex: 1; /* Standard syntax */
+
+
+
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
 }
-.flex-container .column.bg-alt{
-	background: #000035;
-}
-.flex-container .column.bg-alt1{
-	background: #000035;
-	
+
+section{
+	width:100%;
+	float:left;
+	background-color:#555555;
 }
 
 
-.flex-container .column.bg-alt11{
-	background: #000035;
+.content {
+    max-width:98%;
+    margin: auto;
+    background: #555555;
+    padding: 5px;
+	max-height:100%;
 }
-.flex-container .column.bg-alt12{
-	background: #FF0;
-	
-}
-
-button {
-    background-color: #00468C;
-    border-radius: 5px;
-    border: none;
-    color: white;
-    padding: 15px 80px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #454545;
-}
-
-
-button1 {
-    background-color: #00468C;
-    border: none;
-    color: white;
-    padding: 5px 40px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 2px 1px;
-    cursor: pointer;
+.flex-container1{
+	max-width: 98%;
+	min-height: 50%;
+	margin: 0 auto;
+	display: -webkit-flex; /* Safari */
+	display: flex; /* Standard syntax */
+	color:#FFFFFF;
+	background-color: #000035;
+	font-size: 14px;
 }
 
 
 
-section
+
+
+
+.content .row .column h2 {
+	font-size: 12px;
+}
+img
 {
-    width: 90%;
-	min-height: 40px;
-	margin: 0 auto;
-	display: -webkit-flex; /* Safari */		
-	display: flex; /* Standard syntax */
-    color:#00000;
-	background-color:#F00;
-	}
-
-
-
-
-footer
-{
-    width: 90%;
-	min-height: 20px;
-	margin: 0 auto;
-	display: -webkit-flex; /* Safari */		
-	display: flex; /* Standard syntax */
-    color: #FFF;
-	background-color: #000075 ;
-	}
-
-
-content
-	{
-width: 90%;
-	min-height: 200px;
-	margin: 0 auto;
-	display: -webkit-flex; /* Safari */		
-	display: flex; /* Standard syntax */
-    color:#00000;
-	background-color:#000035;
-	}
-	
-div.relative {
-    position: relative;
-    width: 100%;
-    height: 500px;
-    border: 0px solid ;
-} 
-
-div.absolute_videos {
-	position: absolute;
-	top: 78px;
-	left: 5px;
-	width: 530px;
-	height: 314px;
-	border: 0px solid;
-	background-color:  #00468C;
-}
-
-div.absolute1 {
-	position: absolute;
-	top: 8px;
-	right: 3px;
-	width: 290px;
-	height: 128px;
-	border: 5px solid;
-	border-color: #00468C;
-	background-color:  #00468C;
+	border-radius:90%;
 }
 
 
-div.absolute2 {
-	position: absolute;
-	top: 144px;
-	right: 3px;
-	width: 290px;
-	height: 137px;
-	border: 5px solid;
-	border-color:#00468C;
-	background-color:  #00468C;
+
+
+.video-container {
+	position:relative;
+	padding-bottom:50.25%;
+	padding-top:2px;
+	height:80%;
+	width:100%;
+	overflow:hidden;
 }
-div.absolute3 {
-	position: absolute;
-	top: 291px;
-	right: 3px;
-	width: 290px;
-	height: 202px;
-	border: 5px solid;
-	border-color:#00468C;
-	font-size:8px;
-	background-color:  #00468C;
+
+.video-container iframe, .video-container object, .video-container embed {
+	position:absolute;
+	top:5px;
+	left:2px;
+	width:100%;
+	height:700px;
+	float:left;
 }
+
+select{
+	width:150px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </style>
+<script src="SpryAssets/SpryMenuBar.js" type="text/javascript"></script>
+<link href="SpryAssets/SpryMenuBarHorizontal.css" rel="stylesheet" type="text/css">
+
 </head>
 <body>
 <?php
@@ -185,97 +161,65 @@ if(isset($user))
     exit(header("Location: ./homepage.php"));
 }
 ?>
-<div class="flex-container">
-  <div class="column">
-  <form name="form1" method="post" action="homepage.php">
-  <strong>Username:</strong>
-    <input type="text" name="uname" id="uname"><br>
-            <strong>Password: </strong>
-    <input type="password" name="password" id="password"><br>
-    <select name="utype" id="utype">
-      <!-- <option value="-1">select</option> -->
-         <option value="1" selected>Co-ordinator</option>
-      </select><br>
-      <?php
-      if(isset($_GET['error']))
-      { 
-          echo "<label style='color:red'>" . $_GET['error'] . "</label><br>";
-      }
-      ?>
-        <input type="submit" name="submit" id="submit" value="Login">
-      </form>
+<div class="content">
+  <div class="row">
+  <div class="column" style="background-color:#000035;">
+    <h2><img src="kksu.jpeg" alt="img" width="131" height="111"></h2>
+</div>
+  <div class="column" style="background-color:#000035; font-size: 10px;">
+    <h2>CONTACTUS: <strong>Krishna kanta Handiqi Open University</strong><br>
+      Headquarters: Patgaon, Rani. Guwahati- 781017. Assam. India<br>
+      City Office: Housefed Complex. Last Gate, Dispur, Guwahati 781006, Assam, India<br>
+      Tel.: +91 - 0361-2235971/2234964, Fax: 0361 -2235398<br>
+      Email: info@kkhsou.in<br>
+      Website: www.kkhsou.com</h2>
+<p>&nbsp;</p>
   </div>
-        <div class="column bg-alt"><div align="center"><img src="kksu.jpeg" width="180" height="180"></div></div>
-        <div class="column bg-alt1"><button class="button"><a href="./printhallticketForm.php" style="color:white;"><strong>Print Hallticket</strong></a></button>
-</div>
-</div>
-  <section><marquee> Welcome to kkhou </marquee> </section>
-  
-  
-  <div class="flex-container1">
-  <div class="relative">
-    <p><strong>Select Cource</strong>
-      <select name="cource" size="1" id="cource">
-        <option value="-1">select</option>
-        <option value="bca">BCA</option>
-        <option value="diploma">Diploma</option>
-      </select>
-      <label for="submit">
-        <input type="submit" name="submit" id="submit" value="Submit">
-      </label>
-    </p>
-<div class="absolute_videos">
-
-
-<iframe width="530" height="315" src="https://www.youtube.com/embed/o-BBc2yayV8?autoplay=1" frameborder="0" allowfullscreen></iframe>
-
-</div>
-
-
-
-
-
-
-
-
-<div class="absolute1">
-
-
+  <div class="column" style="background-color:#000035;">
 <marquee behavior="scroll" direction="up" onmouseover="this.setAttribute('scrollamount', 1, 0);" onmouseout="this.setAttribute('scrollamount', 3, 0);">
-
-WELCOME TO KRISHNA KANTA HANDIQUI STATE OPEN UNIVERSITY</marquee>
-
+<p>WELCOME TO KRISHNA KANTA--</p>
+<p>		------------------------------------------</p>
+<p>HANDIQUI STATE OPEN UNIVERSITY</p>
+</marquee>
+  </div>
 </div>
 
+<section>
 
-<div class="absolute2">
-  <p><strong>Co-ordinatorDetails</strong>
-    <select name="select" id="select">
-      <option value="-1">select</option>
-      <option value="branch1">Branch1</option>
-      <option value="branch2">Branch2</option>
-      <option value="branch3">Branch3</option>
-    </select>
-    <input type="submit" name="submit2" id="submit2" value="Submit">
-  </p>
-<p>&nbsp; </p>
-</div>
+<a href="E-learningVideos1.html" target="_self"><strong>E-learningVideos</strong></a>
+<a href="UploadDetails.html" target="myframe"><strong>CourseDetails</strong></a>
+<a href="./printhallticketForm.php" target="myframe"><strong>PrintHallticket</strong> </a>
+<a href="#" target="_blank"><strong>OfflineVideos</strong> </a>
+<a href="./userlogin.php" target="_self"><strong>Log in-
+</strong></a>
+
+</section>
 
 
-<div class="absolute3"><strong></strong><h2 align="left"><strong>ContactUs</strong></h2>
-  <h2 align="left"><strong>KRISHNA KANTA HANDIQUI STATE OPEN UNIVERSITY</strong><br>
-    Headquarters: Patgaon, Rani. Guwahati- 781017. Assam. India<br>
-    City Office: Housefed Complex. Last Gate, Dispur, Guwahati 781006, Assam, India<br>
-    Tel.: +91 - 0361-2235971/2234964, Fax: 0361 -2235398<br>
-    Email: <a href="mailto:info@kkhsou.in" style="color:white">info@kkhsou.in</a><br>
-    Website: <a href="www.kkhsou.in" style="color:white">www.kkhsou.in</a></h2>
-</div>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-</div>
-</div>
-<footer>Copy rights at right of krishna kanta Open University</footer>  
+
+
+
+
+<div class="flex-container">
+ 
+<article>
+
+ <div class="video-container">
+   
+   <iframe src="https://www.youtube.com/embed/o-BBc2yayV8?autoplay=1" name="myframe">
+         Sorry your browser does not support inline frames.
+    </iframe>
   
+ </div>
+ </article>
+</div>
+
+
+</div>
+
+
+
+
+
 </body>
-</html>                            
+</html>
