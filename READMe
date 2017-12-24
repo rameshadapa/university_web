@@ -1,0 +1,9 @@
+AWS SDK for php:
+
+1. Install Composer
+
+curl -sS https://getcomposer.org/installer | php
+php composer.phar require aws/aws-sdk-php
+
+<?php
+require 'vendor/autoload.php';

@@ -3,33 +3,27 @@
 <head>
 <style>
 a:link, a:visited {
-    background-color: #f44336;
+    background-color: #000070;
     color: white;
     padding: 14px 75px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
+	border-radius:15px;
+    
 }
-
-
 a:hover, a:active {
-    background-color: red;
+    background-color: #C9C9F8;
 }
 </style>
-
-
-
-
 <style>
 * {
     box-sizing: border-box;
 }
 
 iframe{
-	alignment-adjust:central;}
-body {
-    margin: 0;
-}
+	alignment-adjust:central;
+	background-color:#fff}
 
 /* Create three equal columns that floats next to each other */
 .column {
@@ -51,7 +45,7 @@ article {
 
 
 .flex-container{
-	width: 90%;
+	width: 99%;
 	min-height: 100px;
 	margin: 0 auto;
 	display: -webkit-flex; /* Safari */		
@@ -78,14 +72,14 @@ section{
 
 
 .content {
-    max-width:98%;
+    max-width:99%;
     margin: auto;
     background: #555555;
     padding: 5px;
 	max-height:100%;
 }
 .flex-container1{
-	max-width: 98%;
+	max-width: 99%;
 	min-height: 50%;
 	margin: 0 auto;
 	display: -webkit-flex; /* Safari */
@@ -127,6 +121,7 @@ img
 	width:100%;
 	height:700px;
 	float:left;
+	background-color:#FFFFFF;
 }
 
 select{
@@ -148,11 +143,9 @@ select{
 
 
 </style>
-<script src="SpryAssets/SpryMenuBar.js" type="text/javascript"></script>
-<link href="SpryAssets/SpryMenuBarHorizontal.css" rel="stylesheet" type="text/css">
 
 </head>
-<body>
+<body bgcolor="#FFFFFF">
 <?php
 include_once('utility_config.php');
 $user = get_user();
@@ -161,10 +154,16 @@ if(isset($user))
     exit(header("Location: ./homepage.php"));
 }
 ?>
+
 <div class="content">
   <div class="row">
   <div class="column" style="background-color:#000035;">
-    <h2><img src="kksu.jpeg" alt="img" width="131" height="111"></h2>
+    <table width="40%" height="122" border="0">
+      <tr>
+        <th height="116" scope="col"><img src="img/DD1.png" width="119" height="111" alt="kkhsou"></th>
+      </tr>
+    </table>
+    <h2>&nbsp;</h2>
 </div>
   <div class="column" style="background-color:#000035; font-size: 10px;">
     <h2>CONTACTUS: <strong>Krishna kanta Handiqi Open University</strong><br>
@@ -186,12 +185,11 @@ if(isset($user))
 
 <section>
 
-<a href="E-learningVideos1.html" target="_self"><strong>E-learningVideos</strong></a>
-<a href="UploadDetails.html" target="myframe"><strong>CourseDetails</strong></a>
-<a href="./printhallticketForm.php" target="myframe"><strong>PrintHallticket</strong> </a>
-<a href="#" target="_blank"><strong>OfflineVideos</strong> </a>
-<a href="./userlogin.php" target="_self"><strong>Log in-
-</strong></a>
+<a href="Elearningvideos.html" target="_self"><strong>E-learningVideos</strong></a>
+<a href="CouseDetails.html" target="_self"><strong>CourseDetails</strong></a>
+<a href="./printhallticketForm.php" target="_self"><strong>PrintHallticket</strong> </a>
+<a href="#" target="_self"><strong>OfflineVideos</strong> </a>
+<a href="./userlogin.php" target="_self"><strong>Login</strong></a>
 
 </section>
 

@@ -8,148 +8,111 @@
 
 
 
-
-
 <style>
-table{
-color:#FFF;
-}
-img{
-	border-radius:90%;
-	
-}
-iframe{
-	width:98%;
-	height:100%;
-}
-
-
-button {
-    background-color: #00468C;
-    border: none;
-    color: white;
-    padding: 14px 80px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 10px;
-    margin: 4px 2px;
-    cursor: pointer;
-}
-
-div.relative {
-top:1px;
-
-	position: relative;
-	width: 100%;
-	height: 200px;
-	border: 0px solid;
-	background-color:000035;
-}
-div.absolute1 {
-	position: absolute;
-	top: 13px;
-	right: 16px;
-	width: 202px;
-	height: 57px;
-	border: 0px solid;
-	background-color:  #000034;
-}
-
-div.absolute2SS {
-	position: absolute;
-	top: 40px;
-	right: 389px;
-	width: 202px;
-	height: 57px;
-	border: 0px solid;
-	background-color:  #000034;
-}
-
-
-#apDiv1 {
-	position:absolute;
-	width:200px;
-	height:115px;
-	z-index:1;
-	left: 423px;
-	top: 21px;
-}
+strong{color: #FFF;}
 </style>
+
+
+<link href="css/login_home_css.css" rel="stylesheet">
 </head>
 
 <body style="margin: 0px; padding: 0px; font-family: 'Trebuchet MS',verdana;">
-
 <?php
 include_once("utility_config.php");
 
 if(!isset($_SESSION['userid']))
 {
-	if(isset($_POST['uname']) && isset($_POST['password']))
-	{
-		$uname=$_POST['uname'];
-		$password=$_POST['password'];
-		validate_user($uname, $password);
-	}
-	else
-	{
-		exit(header("Location: index.php"));
-	}
+  if(isset($_POST['uname']) && isset($_POST['password']))
+  {
+    $uname=$_POST['uname'];
+    $password=$_POST['password'];
+    validate_user($uname, $password);
+  }
+  else
+  {
+    exit(header("Location: index.php"));
+  }
 }
 ?>
-
 <table width="100%" style="height: 100%;" cellpadding="10" cellspacing="0" border="0">
 <tr>
 
 <!-- ============ HEADER SECTION ============== -->
-<td height="192" colspan="2" bgcolor="#777d6a" style="height: 10px;">
-<div class="relative">
-
-<div class="absolute1">
-
-<h1 align="right">
-  <button class="button"><strong><?=$_SESSION['userid']?></strong></button>
-</h1>
-
-<h1 align="right"><button class="button"><strong><a href="./logout.php" style="color:white">Logout</a></strong></button></h1>
-</div>
-
-<div class="absolute2">
-<h1 align="center"><img src="kksu.jpeg" width="163" height="139" alt="img"></h1>
-</div>
+<td height="192" colspan="2" bgcolor="white" style="height: 10px;">
 
 
+<table width="100%" border="1" bgcolor="#000035">
+  <tr>
+    <th width="80%" height="200" scope="col"><img src="img/bgimg1.png" alt="logo" width="900" height="200" align="middle"> </th>
+    <th width="20%" scope="col"><strong><?=$_SESSION['userid']?></strong><BR/><br/>
+<button class="button"><strong><a href="./logout.php" style="color:white">Logout</a></strong></button>
+</th>
+  </tr>
+</table>
 
-</div>
 
 
 </td></tr>
 
 <tr>
 <!-- ============ LEFT COLUMN (MENU) ============== -->
-<td width="20%" valign="top" bgcolor="#999f8e">
+<td width="20%" valign="top" bgcolor="#000035">
 
-
-<a href="employee.html" target="myframe">
-    <button class="button"><strong>EmployeeRegistration</strong></button></a>
+<table height="330" border="0" bgcolor="#FFFFFF">
+  <tr>
+    <td width="231" height="43" >
+<a href="StudentRegistration.html" target="myframe">
+    <img src="img/Stdreg.png" width="222" height="54" border="0"/></a></td>
+  </tr>
+  <tr>
+    <td height="43"> <p><a href="employee.html" target="myframe">
+      <img src="img/emp11.png" width="222" height="55"/></a><br>
+      </p></td>
+  </tr>
+  <tr>
+    <td height="43"><p><a href="coursesUploadd.html" target="myframe">
+      <img src="img/CourseDetails.png" width="221" height="48"/></a></p></td>
+  </tr>
+  
+  <tr>
+    <td height="43"><a href="uploadtutorial.html" target="myframe">
+    <img src="img/UploadTutorialsData.png" width="221" height="48"/></a></td>
+  </tr>
+  <tr>
+    <td height="43"><a href="printhallticketForm.php" target="myframe">
+     <img src="img/printHallticket.png" width="221" height="48"/></a></td>
+  </tr>
+  <tr>
+    <td ><a href="UPLOADFINGERPRINTS.php" target="myframe">
+    <img src="img/uploadFingerPrints.png" width="221" height="48"/></a></td>
+  </tr>
+  <tr>
+    <td height="43">
     
-    <a href="StudentRegistration.html" target="myframe">
-    <button class="button"><strong>StudentRegistration</strong></button></a><br>
-    
-    
-<a href="tutorial.html" target="myframe">
-    <button class="button"><strong>UploadTutorialData</strong></button></a>
+    <a href="studentview.html" target="myframe">
+    <img src="img/viewStudentetails.png" width="221" height="48"/></a></td>
+  </tr>
+  
+  <tr>
+    <td height="43">
+    <a href="EmloyeeView.html" target="myframe">
+    <img src="img/ViewEmployeeDetails.png" width="221" height="48"/></a></td>
+  </tr>
+  
+  
+  <tr>
+    <td height="43"><a href="studentview.html" target="myframe">
+    <img src="img/ViewCourseDetails1.png" width="221" height="48"/></a></td>
+  </tr>
+  <tr>
+    <td height="43"><a href="Elearningvideos.html" target="myframe"><img src="img/ViewTutorial1.png" width="221" height="48"/></a></td>
+  </tr>
+</table>
 
-<a href="MFS100/MFS100ClientService/Test/MFS100ClientServiceTest1.html" target="_parent">
-    <button class="button"><strong>UploadFingerPrints</strong></button></a>
 
-<a href="EmloyeeView.html" target="myframe">
-    <button class="button"><strong>ViewEmployeeData</strong></button></a>
-<a href="studentview.html" target="myframe">
-    <button class="button"><strong>ViewtheStudentData</strong></button></a>
 
-<a href="#" target="#">
-    <button class="button"><strong>PrintStudentHallticket</strong></button></a>
+
+
 
 
 
@@ -163,5 +126,5 @@ if(!isset($_SESSION['userid']))
 </iframe></td></tr></table>
 </body>
 
-<html>
+</html>
 

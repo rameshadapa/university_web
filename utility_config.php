@@ -56,6 +56,24 @@ function register_student(
     }
     return false;
 }
+function get_student_photo($student_id)
+{
+    try {
+        $mypdo = new PDO('mysql:host=localhost;dbname=university_data', 'root', 'RameshAdapa@1');
+        $query = "SELECT student_photo FROM student_table WHERE student_userid='$student_id'";
+        $result = $mypdo->query($query);
+        if($row = $result->fetch())
+        {
+            return $row[0];
+        }
+        return null;
+    } catch(PDOException $e)
+    {
+        echo 'Connection failed: ' . $e->getMessage();
+        return null;
+    }
+    return null;
+}
 function logout_session()
 {
     session_destroy();

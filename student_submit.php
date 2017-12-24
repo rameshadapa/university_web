@@ -2,8 +2,6 @@
 include_once("utility_config.php");
 require './vendor/autoload.php';
 
-error_reporting(E_ALL | E_STRICT);
-
 use Aws\S3\S3Client;
 use Aws\Exception\AwsException;
 
@@ -25,8 +23,8 @@ use Aws\Exception\AwsException;
             'version' => 'latest',
             'region' => 'ap-south-1',
             'credentials' => [
-                'key' => 'AKIAIKKF5H5HEWJBKYVA',
-                'secret' => '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'
+                'key' => 'key_here',
+                'secret' => 'secret_here'
             ],
             'scheme' => 'http',
             'retries' => 11,

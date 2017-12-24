@@ -1,0 +1,25 @@
+@charset "utf-8";
+/* CSS Document */
+
+.myButton {
+	background-color: #0080C0;
+	-moz-border-radius:28px;
+	-webkit-border-radius:28px;
+	border-radius:28px;
+	border:1px solid #4e6096;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:19px;
+	padding:15px 40px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #1e305c;
+}
+.myButton:hover {
+	background-color:#476e9e;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
