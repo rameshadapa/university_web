@@ -46,16 +46,11 @@ if(isset($user))
 </tr>
 <tr>
 <td>Select UserType</td>
-<td><select name="usertype">
-<option value="select">select</option>
-
-
-<option value="Admin">Admin</option>
-
-<option value="Co-ordinator" seleted>Co-ordinator</option>
-
-
-
+<td>
+<select name="usertype">
+  <option value="select">select</option>
+  <option value="Admin">Admin</option>
+  <option value="Co-ordinator" selected>Co-ordinator</option>
 </select>
 </td>
 </tr>
