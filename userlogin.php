@@ -25,22 +25,37 @@ if(isset($user))
     exit(header("Location: ./homepage.php"));
 }
 ?>
+<table width="100%" border="0" align="center">
+  <tr>
+    <th width="20%" height="123" scope="col"><a href="./index.php"><img src="img/button_home.png" width="200" height="50" alt="home"></a></th>
+    <th width="17%" scope="col">&nbsp;</th>
+    <th width="26%" scope="col"><img src="img/DD1.png" width="161" height="121" alt="logo"></th>
+    <th width="37%" scope="col">&nbsp;</th>
+  </tr>
+</table>
 <form name="form1" method="post" action="homepage.php">
-<center><h2 style="color:white">UserLogin</h2></center>
-<table border="1" align="center">
+<center></center>
+<table width="321" border="1" align="center" bgcolor="#000060">
 <tr>
-<td>Enter Your Name :</td>
-<td><input type="text" name="uname" id="uname"/></td>
+<td width="122" height="35">Enter Username :</td>
+<td width="167"><input type="text" name="uname" id="uname"/></td>
 </tr>
 <tr>
-<td>Enter Your Password :</td>
-<td><input type="password" name="password" id="password"/></td>
+<td height="27">Enter Password :</td>
+<td><input type="password" name="password"/></td>
 </tr>
 <tr>
 <td>Select UserType</td>
-<td><select name="utype" id="utype">
-<option value="Co-ordinator" seleted>Co-ordinator</option>
+<td><select name="usertype">
+<option value="select">select</option>
+
+
 <option value="Admin">Admin</option>
+
+<option value="Co-ordinator" seleted>Co-ordinator</option>
+
+
+
 </select>
 </td>
 </tr>
@@ -48,13 +63,13 @@ if(isset($user))
 <?php
 if(isset($_GET['error']))
 { 
-	echo "<label style='color:red'>" . $_GET['error'] . "</label><br>";
+  echo "<label style='color:red'>" . $_GET['error'] . "</label><br>";
 }
 ?>
 </tr>
 <tr>
-<td></td>
-<td><input type="submit" name="submit" id="submit" value="Submit"/></td>
+<td height="28"></td>
+<td><input type="submit" value="submit"/></td>
 </table>
 </form>
 </body>

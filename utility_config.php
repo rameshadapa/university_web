@@ -3,7 +3,7 @@ function validate_user($userid, $password)
 {
     try {
         $myPdo = new PDO('mysql:host=localhost;dbname=university_data', 'root', 'RameshAdapa@1');
-        $query = "SELECT user_emailid FROM special_users_table WHERE user_emailid='$userid' and user_password='$password';";
+        $query = "SELECT user_emailid, user_type FROM special_users_table WHERE user_emailid='$userid' and user_password='$password';";
         $result = $myPdo->query($query);
         if($row = $result->fetch())
         {
@@ -11,6 +11,7 @@ function validate_user($userid, $password)
             {
                 session_start();
                 $_SESSION['userid'] = $row[0];
+                $_SESSION['utype']  = $row[1];
             }
             else
             {
@@ -35,12 +36,43 @@ function register_student(
 )
 {
     try {
-//        echo $sex;
-//        $genger = strcmp($sex, 'male') ? 'M' : 'F';
         $myPdo = new PDO('mysql:host=localhost;dbname=university_data', 'root', 'RameshAdapa@1');
         $query = "INSERT INTO student_table(student_userid, student_firstname, student_lastname,
             student_phone, student_gender, student_dob, student_photo, student_fingerprint, student_doc) VALUES(
             '$emailid', '$firstname', '$lastname', '$mobileno', '$sex[0]', STR_TO_DATE('$dob', '%d/%m/%Y'), '$photo', '$fingerprint', now());";
+        $result = $myPdo->query($query);
+        if($result == true)
+        {
+#            echo $result;
+            return true;
+        }
+        return false;
+    }
+    catch(PDOException $e)
+    {
+        echo 'Connection failed: ' . $e->getMessage();
+        return false;
+    }
+    return false;
+}
+function register_employee(
+    $firstname, $lastname,
+    $sex, $userType, $qualification,
+    $emailid, $mobileno,
+    $dob, $photo
+)
+{
+    $chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $tmppwd = '';
+    for($i=0; $i<7; $i++)
+    {
+        $tmppwd .= $chars[rand(0, strlen($chars))];
+    }
+    try {
+        $myPdo = new PDO('mysql:host=localhost;dbname=university_data', 'root', 'RameshAdapa@1');
+        $query = "INSERT INTO special_users_table(user_emailid, user_password, user_firstname, user_lastname,
+            user_gender, user_phone, user_dob, user_type, user_profile_image, user_qualification, user_doc) VALUES(
+            '$emailid', '$tmppwd', '$firstname', '$lastname', '$sex[0]', '$mobileno', STR_TO_DATE('$dob', '%d/%m/%Y'), '$userType', '$photo', '$qualification', now());";
         $result = $myPdo->query($query);
         if($result == true)
         {
@@ -74,6 +106,42 @@ function get_student_photo($student_id)
     }
     return null;
 }
+function get_student_details($student_id)
+{
+    try {
+        $mypdo = new PDO('mysql:host=localhost;dbname=university_data', 'root', 'RameshAdapa@1');
+        $query = "SELECT * FROM student_table WHERE student_userid='$student_id'";
+        $result = $mypdo->query($query);
+        if($row = $result->fetch())
+        {
+            return $row;
+        }
+        return null;
+    } catch(PDOException $e)
+    {
+        echo 'Connection failed: ' . $e->getMessage();
+        return null;
+    }
+    return null;
+}
+function get_employee_details($employee_id)
+{
+    try {
+        $mypdo = new PDO('mysql:host=localhost;dbname=university_data', 'root', 'RameshAdapa@1');
+        $query = "SELECT * FROM special_users_table WHERE user_emailid='$employee_id'";
+        $result = $mypdo->query($query);
+        if($row = $result->fetch())
+        {
+            return $row;
+        }
+        return null;
+    } catch(PDOException $e)
+    {
+        echo 'Connection failed: ' . $e->getMessage();
+        return null;
+    }
+    return null;
+}
 function logout_session()
 {
     session_destroy();
@@ -98,5 +166,108 @@ function random_string()
     }
 
     return $randomstring;
+}
+
+function add_department($department_name)
+{
+    try {
+        $myPdo = new PDO('mysql:host=localhost;dbname=university_data', 'root', 'RameshAdapa@1');
+        $query = "INSERT INTO department_table(department_name) VALUES('$department_name');";
+        $result = $myPdo->query($query);
+        if($result == true)
+        {
+            return true;
+        }
+        return false;
+    }
+    catch(PDOException $e)
+    {
+        echo 'Connection failed: ' . $e->getMessage();
+        return false;
+    }
+    return false;
+}
+function add_course($department_id, $course_name, $course_duration)
+{
+    try {
+        $myPdo = new PDO('mysql:host=localhost;dbname=university_data', 'root', 'RameshAdapa@1');
+        $query = "INSERT INTO courses_table(course_name, course_duration, department_id) VALUES('$course_name', '$course_duration', '$department_id');";
+        $result = $myPdo->query($query);
+        if($result == true)
+        {
+            return true;
+        }
+        return false;
+    }
+    catch(PDOException $e)
+    {
+        echo 'Connection failed: ' . $e->getMessage();
+        return false;
+    }
+    return false;
+}
+function add_subject($subject_name)
+{
+    try {
+        $myPdo = new PDO('mysql:host=localhost;dbname=university_data', 'root', 'RameshAdapa@1');
+        $query = "INSERT INTO subjects_table(subject_name) VALUES('$subject_name');";
+        $result = $myPdo->query($query);
+        if($result == true)
+        {
+            return true;
+        }
+        return false;
+    }
+    catch(PDOException $e)
+    {
+        echo 'Connection failed: ' . $e->getMessage();
+        return false;
+    }
+    return false;
+}
+function all_departments()
+{
+    try {
+        $myPdo = new PDO('mysql:host=localhost;dbname=university_data', 'root', 'RameshAdapa@1');
+        $query = "SELECT * FROM department_table;";
+        $result = $myPdo->query($query);
+        return $result;
+    }
+    catch(PDOException $e)
+    {
+        echo 'Connection failed: ' . $e->getMessage();
+        return false;
+    }
+    return false;
+}
+function all_courses()
+{
+    try {
+        $myPdo = new PDO('mysql:host=localhost;dbname=university_data', 'root', 'RameshAdapa@1');
+        $query = "SELECT * FROM courses_table;";
+        $result = $myPdo->query($query);
+        return $result;
+    }
+    catch(PDOException $e)
+    {
+        echo 'Connection failed: ' . $e->getMessage();
+        return false;
+    }
+    return false;
+}
+function all_subjects()
+{
+    try {
+        $myPdo = new PDO('mysql:host=localhost;dbname=university_data', 'root', 'RameshAdapa@1');
+        $query = "SELECT * FROM subjects_table;";
+        $result = $myPdo->query($query);
+        return $result;
+    }
+    catch(PDOException $e)
+    {
+        echo 'Connection failed: ' . $e->getMessage();
+        return false;
+    }
+    return false;
 }
 ?>

@@ -219,40 +219,90 @@ iframe
 </head>
 
 <body>
-<div class="flex-container1">
+<?php
+include_once("utility_config.php");
+require './vendor/autoload.php';
 
+use Aws\S3\S3Client;
+use Aws\Exception\AwsException;
+
+if(isset($_POST['eid']))
+{
+  $employeeId = $_POST['eid'];
+  $employee = get_employee_details($employeeId);
+  
+  $bucket = "user-resources-bucket";
+  $key = $employee[9];
+  if($key != null)
+  {
+    try {
+      $s3Client = new S3Client([
+        'version' => 'latest',
+        'region' => 'ap-south-1',
+        'credentials' => [
+            'key' => 'key_here',
+            'secret' => 'secret_here'
+        ],
+        'scheme' => 'http',
+        'retries' => 11,
+      ]);
+    
+      $employeePhoto = $s3Client->getObjectUrl($bucket, $key);
+      echo $employeePhoto;
+    } catch(S3Exception $e)
+    {
+        echo "Exception: $e->getMessage()\n";
+    }
+  }
+}
+?>
+<div class="flex-container1">
 <div class="relative">
 <div class="absolute">
   <div align="center"><strong>WELCOME TO KRISHNA KANTA HANDIQUI OPEN UNIVERSITY</strong> </div>
 </div>
 <div class="absolute1">
+<form method="post" action="<?=$_SERVER['PHP_SELF'];?>">
 <table width="532" border="1">
   <tr>
     <th width="127" scope="col">EmployeeID</th>
     <th width="144" scope="col"><label for="sid"></label>
-      <input type="text" name="sid" id="sid" /></th>
+      <input type="text" name="eid" id="eid" /></th>
     <th width="239" scope="col"><button class="button"><strong>Submit</strong></button></th>
   </tr>
 </table>
+</form>
 </div>
 </div>
-
 </div>
-
-
-
-
 <div class="flex-container">
-DISPLAY HEAR
-
-
-
-</div>
-
-
-
-
-
-
+<?php if(isset($employee) && $employee != null) { ?>
+    <table width="100%" border="1">
+      <tr>
+        <th width="15%" scope="col">EmployeeId</th>
+        <th width="14%" scope="col">2</th>
+        <th width="13%" scope="col">3</th>
+        <th width="14%" scope="col">4</th>
+        <th width="11%" scope="col">5</th>
+        <th width="10%" scope="col">6</th>
+        <th width="8%" scope="col">7</th>
+        <th width="8%" scope="col">8</th>
+        <th width="7%" scope="col">9</th>
+      </tr>
+      <tr>
+        <th scope="col"><?=$employee[1];?></th>
+        <th scope="col"><?=$employee[2];?></th>
+        <th scope="col"><?=$employee[3];?></th>
+        <th scope="col"><?=$employee[4];?></th>
+        <th scope="col"><?=$employee[5];?></th>
+        <th scope="col"><?=$employee[6];?></th>
+        <th scope="col"><?=$employee[7];?></th>
+        <th scope="col"><?=$employee[8];?></th>
+        <th scope="col"><?=$employee[9];?></th>
+      </tr>
+    </table>
+    <?php } else { ?>
+      <h3 style="color:red">Invalid employee id.</h3>
+    <?php } ?></div>
 </body>
 </html>

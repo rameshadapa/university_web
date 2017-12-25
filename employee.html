@@ -44,36 +44,19 @@ table{
 	top: 0px;
 }
 </style>
-
-
-
-
 //<script type="text/javascript">
 function validate()
 { 
-   if( document.employee.textnames.value == "" )
+   if( document.employee.firstname.value == "" )
    {
-     alert( "Please provide your Name!" );
-     document.employee.textnames.focus() ;
+     alert( "Please provide your first name!" );
+     document.employee.firstname.focus() ;
      return false;
    }
-   if( document.employee.fathername.value == "" )
+   if( document.employee.lastname.value == "" )
    {
-     alert( "Please provide your Father Name!" );
-     document.employee.fathername.focus() ;
-     return false;
-   }
-   
-   if( document.employee.paddress.value == "" )
-   {
-     alert( "Please provide your Postal Address!" );
-     document.employee.paddress.focus() ;
-     return false;
-   }
-   if( document.employee.personaladdress.value == "" )
-   {
-     alert( "Please provide your Personal Address!" );
-     document.employee.personaladdress.focus() ;
+     alert( "Please provide your last Name!" );
+     document.employee.lastname.focus() ;
      return false;
    }
    if ( ( employee.sex[0].checked == false ) && ( employee.sex[1].checked == false ) )
@@ -81,51 +64,15 @@ function validate()
    alert ( "Please choose your Gender: Male or Female" );
    return false;
    }   
-   
-   
    if( document.employee.utype.value == "-1" )
    {
      alert( "Please provide your City!" );
      document.employee.utype.focus() ;
      return false;
    }
-   
-   
-   
-   
-   
-   
-   
-   if( document.employee.City.value == "-1" )
-   {
-     alert( "Please provide your City!" );
-     document.employee.City.focus() ;
-     return false;
-   }   
-   if( document.employee.Course.value == "-1" )
+   if( document.employee.qualification.value == "-1" )
    {
      alert( "Please provide your Course!" );
-    
-     return false;
-   }   
-   if( document.employee.District.value == "-1" )
-   {
-     alert( "Please provide your Select Distric!" );
-    
-     return false;
-   }   
-   if( document.employee.State.value == "-1" )
-   {
-     alert( "Please provide your Select State!" );
-     
-     return false;
-   }
-   if( document.employee.pincode.value == "" ||
-           isNaN( document.employee.pincode.value) ||
-           document.employee.pincode.value.length != 6 )
-   {
-     alert( "Please provide a pincode in the format ######." );
-     document.employee.pincode.focus() ;
      return false;
    }
  var email = document.employee.emailid.value;
@@ -144,40 +91,26 @@ function validate()
      return false;
    }
   if( document.employee.mobileno.value == "" || isNaN( document.employee.mobileno.value) ||
-           document.employee.mobileno.value.length != 10 )
+			document.employee.mobileno.value.length != 10 )
    {
      alert( "Please provide a Mobile No in the format 123." );
      document.employee.mobileno.focus() ;
      return false;
    }
-   
-
-
   if( document.employee.photo.value == "" )
    {
      alert( "Please provide your Photo!" );
      document.employee.photo.focus() ;
      return false;
-   }
-if( document.employee.SF.value == "" )
-   {
-     alert( "Please Scan your FingerPrint!" );
-     document.employee.SF.focus() ;
-     return false;
-   }
-
-
-
+   }	 
+	 document.employee.submit();
 }
 </script>
-
-
-
 </head>
 <body bgcolor="#000035">
 <div id="apDiv1">
 <div class="section">
-  <form action="#" name="employee" onSubmit="return(validate());">
+  <form method="post" name="employee" action="./employee_submit.php"  enctype="multipart/form-data">
     
     <table cellpadding="2" width="20%" bgcolor="#003366" align="center"
 	cellspacing="2" border="3">
@@ -191,88 +124,37 @@ if( document.employee.SF.value == "" )
 	</tr>
 
 	<tr>
-		<td>Name</td>
-		<td><input type=text name=textnames id="textname" size="30"></td>
+		<td>First name</td>
+		<td><input type=text name=firstname id="firstname" size="30"></td>
 	</tr>
 
 	<tr>
-		<td>Father Name</td>
-		<td><input type="text" name="fathername" id="fathername"
+		<td>Last Name</td>
+		<td><input type="text" name="lastname" id="lastname"
 			size="30"></td>
 	</tr>
 	<tr>
-		<td>Postal Address</td>
-		<td><input type="text" name="paddress" id="paddress" size="30"></td>
-	</tr>
-
-	<tr>
-		<td>Personal Address</td>
-		<td><input type="text" name="personaladdress"
-			id="personaladdress" size="30"></td>
-	</tr>
-
-	<tr>
-		<td>Sex</td>
+		<td>Gender</td>
 		<td><input type="radio" name="sex" value="male" size="10">Male
 		<input type="radio" name="sex" value="Female" size="10">Female</td>
 	</tr>
-
 	<tr>
 	  <td>UserType</td>
 	  <td><select name="utype">
 	    <option value="-1">select..</option>
-	    <option value="admin">Admin</option>
-	    <option value="co-ordinator">Co-ordinator</option>
+	    <option value="0">Admin</option>
+	    <option value="1">Co-ordinator</option>
       </select></td>
 	  </tr>
 	<tr>
-		<td>City</td>
-		<td><select name="City">
-			 <option value="-1" selected>select..</option>
-			<option value="New Delhi">NEW DELHI</option>
-			<option value="Mumbai">MUMBAI</option>
-			<option value="Goa">GOA</option>
-			<option value="Patna">PATNA</option>
-		</select></td>
-	</tr>
-
-	<tr>
-		<td>Course</td>
-		<td><select name="Course">
+		<td>Qualification</td>
+		<td><select name="qualification">
 			<option value="-1" selected>select..</option>
 			<option value="B.Tech">B.TECH</option>
 			<option value="MCA">MCA</option>
 			<option value="MBA">MBA</option>
 			<option value="BCA">BCA</option>
 		</select></td>
-	</tr>
-
-	<tr>
-		<td>District</td>
-		<td><select name="District">
-			<option value="-1" selected>select..</option>
-			<option value="Nalanda">NALANDA</option>
-			<option value="UP">UP</option>
-			<option value="Goa">GOA</option>
-			<option value="Patna">PATNA</option>
-		</select></td>
-
-	</tr>
-
-	<tr>
-		<td>State</td>
-		<td><select Name="State">
-			<option value="-1" selected>select..</option>
-			<option value="New Delhi">NEW DELHI</option>
-			<option value="Mumbai">MUMBAI</option>
-			<option value="Goa">GOA</option>
-			<option value="Bihar">BIHAR</option>
-		</select></td>
-	</tr>
-	<tr>
-		<td>PinCode</td>
-		<td><input type="text" name="pincode" id="pincode" size="30"></td>
-
 	</tr>
 	<tr>
 		<td>EmailId</td>
@@ -289,12 +171,12 @@ if( document.employee.SF.value == "" )
 		<td><input type="text" name="mobileno" id="mobileno" size="30"></td>
 	</tr>
 	<tr>
-	      <td>Photo</td>
+    <td>Photo</td>
 		<td ><input type="file" name="photo" id="photo" size="30"></td>
 	</tr>
 	<tr>
 	  <td><input type="reset"></td>
-	  <td colspan="2"><input type="submit" value="Submit Form" /></td>
+	  <td colspan="2"><input type="button" value="Submit Form" onclick="return(validate());"/></td>
 	  </tr>
   </table>
 </form>

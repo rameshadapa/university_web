@@ -5,15 +5,15 @@ require './vendor/autoload.php';
 use Aws\S3\S3Client;
 use Aws\Exception\AwsException;
 
-
     $firstName = $_POST['firstname'];
     $lastName = $_POST['lastname'];
     $sex = $_POST['sex'];
+    $userType = $_POST['utype'];
+    $qualification = $_POST['qualification'];
     $emailid = $_POST['emailid'];
     $dob = $_POST['dob'];
     $mobileno = $_POST['mobileno'];
     $photo = $_FILES['photo']['tmp_name'];
-    $fingerPrint = $_POST['SF'];
 
     $bucket = "user-resources-bucket";
     $key = 'uploads/users' . '/' . random_string();
@@ -41,10 +41,10 @@ use Aws\Exception\AwsException;
         echo "Exception: $e->getMessage()\n";
     }
 
-    if(register_student($firstName, $lastName, $sex, $emailid, $mobileno, $dob, $key, $fingerPrint) == true)
+    if(register_employee($firstName, $lastName, $sex, $userType, $qualification, $emailid, $mobileno, $dob, $key) == true)
     {
         echo "<h3>Registration success<br /></h3>";
-        echo "<h3>Register another student <a href='./StudentRegistration.html'>here</a>.</h3>";
+        echo "<h3>Register another employee <a href='./employee.html'>here</a>.</h3>";
     } 
     else {
         echo "Some problem while registring.";

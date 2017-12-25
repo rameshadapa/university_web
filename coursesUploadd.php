@@ -60,6 +60,23 @@ table{
 	color:#FFFFFF;}
 
 </style>
+<?php
+include_once("utility_config.php");
+$departments = all_departments();
+if(isset($_POST['dept']))
+{
+  $dept_name = $_POST['dept'];
+  $dept_add_status = '';
+  if(add_department($dept_name) == true)
+  {
+    $dept_add_status = 'Department add successfully.';
+  }
+  else
+  {
+    $dept_add_status = 'Error in adding department.';
+  }
+}
+?>
 <script language="javascript">
 var arr = new Array();
 arr[0] = new Array("-select-");
@@ -81,17 +98,17 @@ arr[11] = new Array("ASSAME","EDUCTION","ENGLISH","POLITICAL SCIENCE","SOCIOLOGY
 
 
 function change(Dtype){
-var comboValue = Dtype.value;
-document.forms["form"].elements["SC"].options.length=0;
-for (var i=0;i<arr[comboValue].length;i++){
-var option = document.createElement("option");
-option.setAttribute('value',i+1);
-option.innerHTML = arr[comboValue][i];
-document.forms["form"].elements["SC"].appendChild(option);
-}
+  var comboValue = Dtype.value;
+  document.forms["form"].elements["SC"].options.length=0;
+  for (var i=0;i<arr[comboValue].length;i++){
+    var option = document.createElement("option");
+    option.setAttribute('value',i+1);
+    option.innerHTML = arr[comboValue][i];
+    document.forms["form"].elements["SC"].appendChild(option);
+  }
 }
 </script>
-<script src="js/CoursesUploadd validate.js"></script>
+<script src="js/CoursesUploadd_validate.js"></script>
 </head>
 <body bgcolor="#000035">
           

@@ -17,23 +17,7 @@ strong{color: #FFF;}
 </head>
 
 <body style="margin: 0px; padding: 0px; font-family: 'Trebuchet MS',verdana;">
-<?php
-include_once("utility_config.php");
 
-if(!isset($_SESSION['userid']))
-{
-  if(isset($_POST['uname']) && isset($_POST['password']))
-  {
-    $uname=$_POST['uname'];
-    $password=$_POST['password'];
-    validate_user($uname, $password);
-  }
-  else
-  {
-    exit(header("Location: index.php"));
-  }
-}
-?>
 <table width="100%" style="height: 100%;" cellpadding="10" cellspacing="0" border="0">
 <tr>
 
@@ -43,11 +27,22 @@ if(!isset($_SESSION['userid']))
 
 <table width="100%" border="1" bgcolor="#000035">
   <tr>
-    <th width="80%" height="200" scope="col"><img src="img/bgimg1.png" alt="logo" width="100%" height="200" align="middle"> </th>
-    <th width="20%" scope="col"><strong><?=$_SESSION['userid']?></strong><BR/><br/>
-<button class="button"><strong><a href="./logout.php" style="color:white">Logout</a></strong></button>
-</th>
+    <th width="80%" height="204" scope="col"><img src="img/bgimg1.png" alt="logo" width="100%" height="200" align="middle"> </th>
+    <th width="20%" scope="col">
+    
+    <table width="100%" border="1">
+  <tr>
+    <th height="138" scope="col"><img src="img/account-profile-user-icon--icon-search-engine-10.png" width="70%" height="80%" alt="account"></th>
   </tr>
+  <tr>
+    <td height="50"><img src="img/home-imgs/logout.png" width="100%" height="52" alt="logout"></td>
+  </tr>
+</table>
+
+    
+    
+    </th>
+    </tr>
 </table>
 
 
@@ -64,15 +59,13 @@ if(!isset($_SESSION['userid']))
 <a href="StudentRegistration.html" target="myframe">
     <img src="img/Stdreg.png" width="100%" height="48" border="0"/></a></td>
   </tr>
-  <?php if($_SESSION['utype'] == 0) { ?>
   <tr>
     <td height="43"> <p><a href="employee.html" target="myframe">
       <img src="img/emp11.png" width="100%" height="48"/></a><br>
       </p></td>
   </tr>
-  <?php } ?>
   <tr>
-    <td height="43"><p><a href="coursesUploadd.php" target="myframe">
+    <td height="43"><p><a href="coursesUploadd.html" target="myframe">
       <img src="img/CourseDetails.png" width="100%" height="48"/></a></p></td>
   </tr>
   
@@ -81,36 +74,32 @@ if(!isset($_SESSION['userid']))
     <img src="img/UploadTutorialsData.png" width="100%" height="48"/></a></td>
   </tr>
   <tr>
-    <td height="43"><a href="printhallticketForm.php" target="myframe">
-     <img src="img/printHallticket.png" width="100%" height="48"/></a></td>
+    <td height="43"><a href="PRINTHALLTICKET_admin.html" target="myframe"><img src="img/printHallticket.png" width="100%" height="48"/></a></td>
   </tr>
   <tr>
-    <td ><a href="UPLOADFINGERPRINTS.php" target="myframe">
+    <td ><a href="UPLOADFINGERPRINTS.html" target="myframe">
     <img src="img/uploadFingerPrints.png" width="100%" height="48"/></a></td>
   </tr>
   <tr>
     <td height="43">
     
-    <a href="studentview.php" target="myframe">
+    <a href="StudentView1.html" target="myframe">
     <img src="img/viewStudentetails.png" width="100%" height="48"/></a></td>
   </tr>
-  <?php if($_SESSION['utype'] == 0) { ?>
+  
   <tr>
     <td height="43">
     <a href="EmloyeeView.html" target="myframe">
     <img src="img/ViewEmployeeDetails.png" width="100%" height="48"/></a></td>
   </tr>
-  <?php } ?>
+  
+  
   <tr>
-    <td height="43"><a href="studentview.php" target="myframe">
+    <td height="43"><a href="coursedetails11.html" target="myframe">
     <img src="img/ViewCourseDetails1.png" width="100%" height="48"/></a></td>
   </tr>
   <tr>
-    <td height="43"><a href="DeptAdd.php" target="myframe">
-    Add Department</a></td>
-  </tr>
-  <tr>
-    <td height="43"><a href="Elearningvideos.html" target="myframe"><img src="img/ViewTutorial1.png" width="100%" height="48"/></a></td>
+    <td height="43"><a href="ViewTutorila.html" target="myframe"><img src="img/ViewTutorial1.png" width="100%" height="48"/></a></td>
   </tr>
 </table>
 
@@ -125,7 +114,7 @@ if(!isset($_SESSION['userid']))
 </td>
 
 <!-- ============ RIGHT COLUMN (CONTENT) ============== -->
-<td width="80%" height="90%" valign="top" bgcolor="#d2d8c7">
+<td width="80%"  height="90%"valign="top" bgcolor="#d2d8c7">
 
 <iframe name="myframe">
 </iframe></td></tr></table>
