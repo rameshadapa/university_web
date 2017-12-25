@@ -97,7 +97,7 @@ if(!isset($_SESSION['userid']))
   <?php if($_SESSION['utype'] == 0) { ?>
   <tr>
     <td height="43">
-    <a href="EmloyeeView.html" target="myframe">
+    <a href="EmloyeeView.php" target="myframe">
     <img src="img/ViewEmployeeDetails.png" width="100%" height="48"/></a></td>
   </tr>
   <?php } ?>
