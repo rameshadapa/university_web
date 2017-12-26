@@ -2,7 +2,7 @@
 
 <html>
 <head>
-
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
 <title>WEB PAGE TITLE GOES HERE</title>
 
 
@@ -107,10 +107,10 @@ if(!isset($_SESSION['userid']))
   </tr>
   <tr>
     <td height="43"><a href="DeptAdd.php" target="myframe">
-    Add Department</a></td>
+    <img src="img/AddDepartment.jpeg" width="100%" height="48"/></a></td>
   </tr>
   <tr>
-    <td height="43"><a href="Elearningvideos.html" target="myframe"><img src="img/ViewTutorial1.png" width="100%" height="48"/></a></td>
+    <td height="43"><a href="ViewTutorial.html" target="myframe"><img src="img/ViewTutorial1.png" width="100%" height="48"/></a></td>
   </tr>
 </table>
 
