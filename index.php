@@ -23,9 +23,14 @@ img:hover{
   filter: alpha(opacity=70);
 }
 </style>
+<script type="text/javascript">
+    window.history.forward();
+    function noBack() { window.history.forward(); }
+</script>
 </head>
 
-<body  bgcolor="#fff">
+<body  bgcolor="#fff" onload="noBack();"
+    onpageshow="if (event.persisted) noBack();" onunload="">
 <?php
 include_once('utility_config.php');
 $user = get_user();

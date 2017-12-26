@@ -68,7 +68,11 @@ arr[10] = new Array("DIMC","DTM","DCWE","DCHN","DLIS","DSL");
 
 arr[11] = new Array("ASSAME","EDUCTION","ENGLISH","POLITICAL SCIENCE","SOCIOLOGY","ECONOMICS","PHILOSOPHY");
 
-
+<?php
+include_once("utility_config.php");
+$departments = all_departments();
+$courses = all_courses();
+?>
 
 
 

@@ -105,7 +105,7 @@ function CaptureForPrintHT()
 
 function validatePrintHT()
 {
-  document.student_registration.submit();
+  document.print_ht_form.submit();
   return true;
 }
 

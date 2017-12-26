@@ -13,7 +13,6 @@ button {
     margin: 4px 2px;
     cursor: pointer;
 }
-
 .flex-container{
 	width: 90%;
 	min-height: 580px;
@@ -24,7 +23,6 @@ button {
 	background-color: #000035;
 
 }
-
 div.relative {
 	position: relative;
 	width: 100%;
@@ -32,9 +30,6 @@ div.relative {
 	border: 0px solid;
 	background-color:000035;
 } 
-
-
-
 div.absolute {
 	position: fixed;
 	top: 34px;
@@ -44,20 +39,15 @@ div.absolute {
 	border: 0px solid;
 	background-color:  #000034;
 }
-
-
 .center {
     margin: auto;
     width: 50%;
     border: 3px solid green;
     padding: 10px;
-	
 }
-
-
 table{
-	
-	color:#FFFFFF;}
+	color:#FFFFFF;
+}
 
 </style>
 <?php
@@ -77,34 +67,30 @@ if(isset($_POST['dept']))
   }
 }
 ?>
-<script language="javascript">
+<script type="text/javascript">
 var arr = new Array();
 arr[0] = new Array("-select-");
 arr[1] = new Array("Ph.D/M.Phil.");
 arr[2] = new Array("MCA");
 arr[3] = new Array("Msc(IT)");
 arr[4] = new Array("MBA");
-
 arr[5] = new Array("MSW");
 arr[6] = new Array("ASSAME","EDUCTION","ENGLISH","POLITICAL SCIENCE","SOCILOGY","JOURNALISM AND MASSCOMMUNICATION");
 arr[7] = new Array("PGDMC","PGDHRM","PGDBI","PGDBJ","PGDBM","PGDCA");
 arr[8] = new Array("BCA"," BBA"," B.com"," BA");
 arr[9] = new Array("Florida","New York","Maryland");
 arr[10] = new Array("DIMC","DTM","DCWE","DCHN","DLIS","DSL");
-
 arr[11] = new Array("ASSAME","EDUCTION","ENGLISH","POLITICAL SCIENCE","SOCIOLOGY","ECONOMICS","PHILOSOPHY");
-
-
-
 
 function change(Dtype){
   var comboValue = Dtype.value;
-  document.forms["form"].elements["SC"].options.length=0;
+  alert(comboValue);
+  document.forms["coursesUploadd"].elements["SC"].options.length=0;
   for (var i=0;i<arr[comboValue].length;i++){
     var option = document.createElement("option");
     option.setAttribute('value',i+1);
     option.innerHTML = arr[comboValue][i];
-    document.forms["form"].elements["SC"].appendChild(option);
+    document.forms["coursesUploadd"].elements["SC"].appendChild(option);
   }
 }
 </script>
