@@ -78,7 +78,7 @@ if(isset($_POST['dept']))
 </div>
 
 <?php if($departments) { ?>
-<div>
+<div class="footer">
   <?php
     while($row = $departments->fetch())
     { ?>

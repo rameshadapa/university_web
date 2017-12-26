@@ -34,6 +34,13 @@ body,td,th {
 
 .pagination a:hover:not(.active) {background-color: #ddd;}
 
+.footer {
+    padding: 1em;
+    color: white;
+    background-color: #000060;
+    clear: left;
+    text-align: center;
+}
 
 </style>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -87,7 +94,7 @@ if(isset($_POST['sbj']))
 </div>
 
 <?php if($subjects) { ?>
-<div>
+<div class="footer">
   <?php
     while($row = $subjects->fetch())
     { ?>

@@ -34,6 +34,13 @@ body,td,th {
 
 .pagination a:hover:not(.active) {background-color: #ddd;}
 
+.footer {
+    padding: 1em;
+    color: white;
+    background-color: #000060;
+    clear: left;
+    text-align: center;
+}
 
 </style>
 </head>
@@ -122,7 +129,7 @@ if(isset($_POST['department']) && isset($_POST['course']) && isset($_POST['cdura
   
 </div>
 <?php if($courses) { ?>
-  <div>
+  <div class="footer">
     <?php
       while($row = $courses->fetch())
       { ?>
