@@ -5,11 +5,6 @@
   <style>
   body{color:#FFFFFF;}
   </style>
-  <script type="text/javascript" src="jquery-1.8.2.js"></script>
-    <script type="text/javascript" src="mfs100-9.0.2.6.js"></script>
-    <script type="text/javascript" src="validate.js"></script>
-  </head>
-  <body bgcolor="#000035" onload="load()">
 <?php
 include_once("utility_config.php");
 require './vendor/autoload.php';
@@ -48,7 +43,10 @@ if(isset($_POST['SID']))
   }
 }
 ?>
-<script type="text/javascript">
+  <script type="text/javascript" src="jquery-1.8.2.js"></script>
+    <script type="text/javascript" src="mfs100-9.0.2.6.js"></script>
+    <script type="text/javascript" src="validate.js"></script>
+    <script type="text/javascript">
 function load() 
 {
   <?php
@@ -60,7 +58,8 @@ function load()
   ?>
 }
 </script>
-      
+</head>
+<body bgcolor="#000035" onload="load()">
     <h1 align="center">UploadFingerPrints</h1>
     <table width="100%" height="324" border="1"  align="center" bordercolor="#000035">
   <tr>
