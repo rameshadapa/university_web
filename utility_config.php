@@ -187,7 +187,7 @@ function random_string()
     $randomstring = '';
     for($i=0; $i<25; $i++)
     {
-        $randomstring .= $characters[rand(0, strlen($characters))];
+        $randomstring .= $characters[rand(0, strlen($characters)-1)];
     }
 
     return $randomstring;
