@@ -15,7 +15,7 @@ use Aws\Exception\AwsException;
 if(isset($_POST['SID']))
 {
   $studentId = $_POST['SID'];
-  $student_det = get_student_photo($studentId);
+  $student_det = get_student_photo_fp($studentId);
   $student_fp = $student_det[1];
   
   $bucket = "user-resources-bucket";
