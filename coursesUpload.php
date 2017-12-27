@@ -67,17 +67,6 @@ arr[9] = new Array("Florida","New York","Maryland");
 arr[10] = new Array("DIMC","DTM","DCWE","DCHN","DLIS","DSL");
 
 arr[11] = new Array("ASSAME","EDUCTION","ENGLISH","POLITICAL SCIENCE","SOCIOLOGY","ECONOMICS","PHILOSOPHY");
-
-<?php
-include_once("utility_config.php");
-$departments = all_departments();
-$courses = all_courses();
-?>
-
-
-
-
-
 function change(combo1){
 var comboValue = combo1.value;
 document.forms["form"].elements["combo2"].options.length=0;

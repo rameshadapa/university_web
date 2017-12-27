@@ -2,19 +2,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
-<title>KrishnaKantaHandiquiStateOpenUniversity</title>
+<title>Krishna Kanta Handiqui State Open University</title>
 <style>
 iframe{
 	alignment-adjust:central;
 	background-color:#fff;
 	width:80%;
 	height:100%
-	
-	
-	}
-	table{
-		color:#FFF;
-	}
+}
+table{
+  color:#FFF;
+}
 body,td,th {
 	font-size: 12px;
 }
@@ -24,19 +22,18 @@ img:hover{
 }
 </style>
 <script type="text/javascript">
-    window.history.forward();
-    function noBack() { window.history.forward(); }
+  window.history.forward();
+  function noBack() { window.history.forward(); }
 </script>
 </head>
-
 <body  bgcolor="#fff" onload="noBack();"
-    onpageshow="if (event.persisted) noBack();" onunload="">
+  onpageshow="if (event.persisted) noBack();" onunload="">
 <?php
 include_once('utility_config.php');
 $user = get_user();
 if(isset($user))
 {
-    exit(header("Location: ./homepage.php"));
+  exit(header("Location: ./homepage.php"));
 }
 ?>
 <table width="100%"  border="0" bgcolor="#000035">
@@ -55,11 +52,9 @@ Website: www.kkhsou.com </th>
 <p>		------------------------------------------</p>
 <p>HANDIQUI STATE OPEN UNIVERSITY</p>
 </marquee>
-
 </th>
 </tr> 
 <table width="100%"  border="0" bgcolor="#000035">
- 
 <tr>
   <th width="20%" height="54" scope="col"><a href="Elearningvideos.html"><img src="img/home-imgs/Elearning.png" width="206" height="48" alt="Elearning" /></a></th>
   <th width="20%" scope="col"><a href="coursedetails.html"><img src="img/home-imgs/coursedetails.png" width="206" height="48" alt="courseDetails" /></a></th>
@@ -67,17 +62,11 @@ Website: www.kkhsou.com </th>
   <th width="20%" scope="col"><img src="img/home-imgs/OfflineVideos.png" width="206" height="48" alt="offlineVideos" /></th>
   <th width="20%" scope="col"><a href="userlogin.php"><img src="img/home-imgs/login.png" width="206" height="48" alt="login" /></a></th>
 </tr>
- 
- 
 </table>
-  
 <table width="100%" height="100%" border="0" bgcolor="#000035">
-    <tr>
-      <td width="100%" height="501" align="center"><iframe width="800" height="415" src="https://www.youtube.com/embed/ga5la55t4-M?autoplay=1" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
-      
-      
-      </td>
-    </tr>
+  <tr>
+    <td width="100%" height="501" align="center"><iframe width="800" height="415" src="https://www.youtube.com/embed/ga5la55t4-M?autoplay=1" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe></td>
+  </tr>
 </table>
 </body>
 </html>

@@ -50,41 +50,45 @@ table{
 }
 
 </style>
+<script type="text/javascript">
+var arr = [];
+// arr[0] = new Array("-select-");
+// arr[1] = new Array("Ph.D/M.Phil.");
+// arr[2] = new Array("MCA");
+// arr[3] = new Array("Msc(IT)");
+// arr[4] = new Array("MBA");
+// arr[5] = new Array("MSW");
+// arr[6] = new Array("ASSAME","EDUCTION","ENGLISH","POLITICAL SCIENCE","SOCILOGY","JOURNALISM AND MASSCOMMUNICATION");
+// arr[7] = new Array("PGDMC","PGDHRM","PGDBI","PGDBJ","PGDBM","PGDCA");
+// arr[8] = new Array("BCA"," BBA"," B.com"," BA");
+// arr[9] = new Array("Florida","New York","Maryland");
+// arr[10] = new Array("DIMC","DTM","DCWE","DCHN","DLIS","DSL");
+// arr[11] = new Array("ASSAME","EDUCTION","ENGLISH","POLITICAL SCIENCE","SOCIOLOGY","ECONOMICS","PHILOSOPHY");
+
 <?php
 include_once("utility_config.php");
 $departments = all_departments();
-if(isset($_POST['dept']))
+$courses = all_courses();
+
+if($courses)
 {
-  $dept_name = $_POST['dept'];
-  $dept_add_status = '';
-  if(add_department($dept_name) == true)
-  {
-    $dept_add_status = 'Department add successfully.';
-  }
-  else
-  {
-    $dept_add_status = 'Error in adding department.';
-  }
+  while($row = $courses->fetch())
+  { ?>
+    if(arr.hasOwnProperty(<?=$row[2];?>))
+    {
+      arr[<?=$row[2];?>].push(<?=$row[0];?>);
+    }
+    else
+    {
+      arr[<?=$row[2];?>] = [<?=$row[0];?>];
+    }
+<?php }
 }
+
 ?>
-<script type="text/javascript">
-var arr = new Array();
-arr[0] = new Array("-select-");
-arr[1] = new Array("Ph.D/M.Phil.");
-arr[2] = new Array("MCA");
-arr[3] = new Array("Msc(IT)");
-arr[4] = new Array("MBA");
-arr[5] = new Array("MSW");
-arr[6] = new Array("ASSAME","EDUCTION","ENGLISH","POLITICAL SCIENCE","SOCILOGY","JOURNALISM AND MASSCOMMUNICATION");
-arr[7] = new Array("PGDMC","PGDHRM","PGDBI","PGDBJ","PGDBM","PGDCA");
-arr[8] = new Array("BCA"," BBA"," B.com"," BA");
-arr[9] = new Array("Florida","New York","Maryland");
-arr[10] = new Array("DIMC","DTM","DCWE","DCHN","DLIS","DSL");
-arr[11] = new Array("ASSAME","EDUCTION","ENGLISH","POLITICAL SCIENCE","SOCIOLOGY","ECONOMICS","PHILOSOPHY");
 
 function change(Dtype){
   var comboValue = Dtype.value;
-  alert(comboValue);
   document.forms["coursesUploadd"].elements["SC"].options.length=0;
   for (var i=0;i<arr[comboValue].length;i++){
     var option = document.createElement("option");
@@ -97,49 +101,37 @@ function change(Dtype){
 <script src="js/CoursesUploadd_validate.js"></script>
 </head>
 <body bgcolor="#000035">
-          
-          
-      <form action="#" name="coursesUploadd" onSubmit="return(validate());">
-      
-      
-      <table width="20%" border="1" bgcolor="#000060"  align="center">
+  <form action="#" name="coursesUploadd" action="./upload_courses.php">
+  <table width="20%" border="1" bgcolor="#000060"  align="center">
   <tr>
     <th width="48%" scope="col"></th>
     <th width="48%" scope="col"><h1>CourseDetails</h1></th>
-   
   </tr>
   <tr>
     <td>Department	: </td>
     <td width="52%"><select name="Dtype" onChange="change(this);">
-	    <option value="0">select..</option>
-	    <option value="Ph.D&M.Phil">Ph.D&M.Phil</option>
-	    <option value="Master'sDegree">Master'sDegree</option>
-     
-     <option value="PG Diploma">PG Diploma</option>
-	    <option value="Bachelors Degree">Bachelors Degree</option>
-     
-     <option value="Diploma">Diploma</option>
-	    <option value="D.El.Ed.">D.El.Ed.</option>
-     
-     <option value="Certificate">Certificate</option>
-	    <option value="ICT Enabled Programmes">ICT Enabled Programmes</option>
-     
-     
-     
-      </select></td>
+    <option value="0" name="department" id="department" selected>select..</option>
+    <?php
+    if($departments)
+    {
+      while($row = $departments->fetch())
+      { ?>
+        <option value='<?=$row[0];?>' ><?=$row[1];?></option>
+      <?php
+      }
+    }
+    ?>
+    </select></td>
   </tr>
   <tr>
     <td>SelectCourses	</td>
-    <td><select name="SC">
-    
+    <td><select name="SC" id="SC">
     <option value="0">select</option>
-    <option value="c1">c1</option>
-      <option value="c2">c2</option>
     </select></td>
   </tr>
   <tr>
     <td>Select Year </td>
-    <td><select name="year">
+    <td><select name="year" id="year">
       <option value="0" selected>-Select-</option>
       <option value="1">1year</option>
       <option value="1-1sem">1-1sem</option>
@@ -154,27 +146,21 @@ function change(Dtype){
   </tr>
   <tr>
     <td>CourseDetails:</td>
-    <td><textarea name="desc" id="desc2" cols="45" rows="5"></textarea></td>
+    <td><textarea name="desc" id="desc" cols="45" rows="5"></textarea></td>
   </tr>
   <tr>
     <td>UploadImages</td>
-    <td><input type="file" name="img" id="img2"></td>
+    <td><input type="file" name="img" id="img"></td>
   </tr>
   <tr>
     <td>&nbsp;</td>
-    <td><button class="button">submit</button></td>
+    <td><button class="button" onClick="return(validate());">submit</button></td>
   </tr>
   <tr>
     <td>&nbsp;</td>
     <td>&nbsp;</td>
   </tr>
 </table>
-
-       </form>
-          
-          
-          
-          
-
+</form>
 </body>
 </html>

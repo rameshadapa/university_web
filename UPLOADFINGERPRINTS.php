@@ -1,17 +1,15 @@
 <html>
-    <head>
-        <title>Print your hallticket here.</title>
-        
-		<style>
-		body{color:#FFFFFF;}
-		
-		</style>
-		
-		<script type="text/javascript" src="jquery-1.8.2.js"></script>
-        <script type="text/javascript" src="mfs100-9.0.2.6.js"></script>
-        <script type="text/javascript" src="validate.js"></script>
-    </head>
-    <body bgcolor="#000035">
+  <head>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+    <title>Print your hallticket here.</title>
+  <style>
+  body{color:#FFFFFF;}
+  </style>
+  <script type="text/javascript" src="jquery-1.8.2.js"></script>
+    <script type="text/javascript" src="mfs100-9.0.2.6.js"></script>
+    <script type="text/javascript" src="validate.js"></script>
+  </head>
+  <body bgcolor="#000035">
 <?php
 include_once("utility_config.php");
 require './vendor/autoload.php';
@@ -44,7 +42,7 @@ if(isset($_POST['SID']))
       echo $studentPhoto;
     } catch(S3Exception $e)
     {
-        echo "Exception: $e->getMessage()\n";
+      echo "Exception: $e->getMessage()\n";
     }
   }
 }
@@ -55,7 +53,7 @@ if(isset($_POST['SID']))
   <tr>
     <th height="283" scope="col">
     
-    ScanUrFinger:&gt;<img name="imgFinger" id="imgFinger" width="145px" height="188px" alt="Finger image." />
+    ScanUrFinger <img name="imgFinger" id="imgFinger" width="145px" height="188px" alt="Finger image." />
     <input type="hidden" name="fingerbase64" id="fingerbase64" size="30">
     <br />
     <button class="btn btn-primary" onClick="return CaptureForPrintHT();"><strong>scan</strong></button><br/><br/>
@@ -63,10 +61,7 @@ if(isset($_POST['SID']))
     </th>
   </tr>
   <tr>
-   
     <th height="33" scope="col">
-    
-    
     <table width="100%" border="1">
       <tr>
         <th width="50%" height="23" scope="col">StudentID
@@ -90,8 +85,6 @@ if(isset($_POST['SID']))
       </tr>
     </table></th>
   </tr>
-    </table>
-
-       
-    </body>
+</table>
+</body>
 </html>
