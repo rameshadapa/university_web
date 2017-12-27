@@ -9,7 +9,7 @@
     <script type="text/javascript" src="mfs100-9.0.2.6.js"></script>
     <script type="text/javascript" src="validate.js"></script>
   </head>
-  <body bgcolor="#000035">
+  <body bgcolor="#000035" onload="load()">
 <?php
 include_once("utility_config.php");
 require './vendor/autoload.php';
@@ -20,10 +20,11 @@ use Aws\Exception\AwsException;
 if(isset($_POST['SID']))
 {
   $studentId = $_POST['SID'];
-  $student_photo = get_student_photo($studentId);
+  $student_det = get_student_photo($studentId);
+  $student_fp = $student_det[1];
   
-  $bucket = "userdetails-resources-bucket";
-  $key = $student_photo;
+  $bucket = "user-resources-bucket";
+  $key = $student_det[0];
   if($key != null)
   {
     try {
@@ -47,6 +48,18 @@ if(isset($_POST['SID']))
   }
 }
 ?>
+<script type="text/javascript">
+function load() 
+{
+  <?php
+    if(isset($student_fp) && $student_fp != '')
+    { ?>
+      alert('Student fingerprint already existed.');
+  <?php
+    }
+  ?>
+}
+</script>
       
     <h1 align="center">UploadFingerPrints</h1>
     <table width="100%" height="324" border="1"  align="center" bordercolor="#000035">
@@ -72,7 +85,7 @@ if(isset($_POST['SID']))
         </form>  
         <th width="50%" scope="col" >
         <?php
-          if($isset($studentPhoto))
+          if(isset($studentPhoto))
           { ?>
             <image src="<?=$studentPhoto;?>" name="Simage" width="145px" height="188px" alt="studentImage" />
    <?php  }

@@ -29,6 +29,31 @@ function validate_user($userid, $password)
         exit(header("Location: ./index.php"));
     }
 }
+function upload_courses(
+    $dept, $course,
+    $year, $desc, $imgKey
+)
+{
+    try {
+        $myPdo = new PDO('mysql:host=localhost;dbname=university_data', 'root', 'RameshAdapa@1');
+        $query = "INSERT INTO course_details(course_det_year, course_det_desc,
+            course_id, course_dept, course_doa) VALUES(
+            '$year', '$desc', '$course', '$dept', now());";
+        $result = $myPdo->query($query);
+        if($result == true)
+        {
+#            echo $result;
+            return true;
+        }
+        return false;
+    }
+    catch(PDOException $e)
+    {
+        echo 'Connection failed: ' . $e->getMessage();
+        return false;
+    }
+    return false;
+}
 function register_student(
     $firstname, $lastname,
     $sex, $emailid, $mobileno,
@@ -88,15 +113,15 @@ function register_employee(
     }
     return false;
 }
-function get_student_photo($student_id)
+function get_student_photo_fp($student_id)
 {
     try {
         $mypdo = new PDO('mysql:host=localhost;dbname=university_data', 'root', 'RameshAdapa@1');
-        $query = "SELECT student_photo FROM student_table WHERE student_userid='$student_id'";
+        $query = "SELECT student_photo, student_fingerprint FROM student_table WHERE student_userid='$student_id'";
         $result = $mypdo->query($query);
         if($row = $result->fetch())
         {
-            return $row[0];
+            return $row;
         }
         return null;
     } catch(PDOException $e)

@@ -1,6 +1,6 @@
 //<script type="text/javascript">
 function validate()
-{ 
+{
    if( document.coursesUploadd.Dtype.value == "0" )
    {
      alert( "Please select Department Type!" );

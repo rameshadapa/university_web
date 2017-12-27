@@ -74,34 +74,35 @@ if($courses)
 {
   while($row = $courses->fetch())
   { ?>
-    if(arr.hasOwnProperty(<?=$row[2];?>))
+    if(arr.hasOwnProperty('<?=$row[5];?>'))
     {
-      arr[<?=$row[2];?>].push(<?=$row[0];?>);
+      arr['<?=$row[5];?>']['<?=$row[0];?>'] = '<?=$row[1];?>';
     }
     else
     {
-      arr[<?=$row[2];?>] = [<?=$row[0];?>];
+      var h = new Object();
+      h['<?=$row[0];?>'] = '<?=$row[1];?>';
+      arr['<?=$row[5];?>'] = h;
     }
 <?php }
 }
 
 ?>
-
 function change(Dtype){
   var comboValue = Dtype.value;
   document.forms["coursesUploadd"].elements["SC"].options.length=0;
-  for (var i=0;i<arr[comboValue].length;i++){
+  for (var k in arr[comboValue]){
     var option = document.createElement("option");
-    option.setAttribute('value',i+1);
-    option.innerHTML = arr[comboValue][i];
+    option.setAttribute('value',k);
+    option.innerHTML = arr[comboValue][k];
     document.forms["coursesUploadd"].elements["SC"].appendChild(option);
   }
 }
 </script>
-<script src="js/CoursesUploadd_validate.js"></script>
+<script type="text/javascript" src="js/CoursesUploadd_validate.js"></script>
 </head>
 <body bgcolor="#000035">
-  <form action="#" name="coursesUploadd" action="./upload_courses.php">
+  <form method="post" id="coursesUploadd" name="coursesUploadd" action="./upload_courses.php" enctype="multipart/form-data">
   <table width="20%" border="1" bgcolor="#000060"  align="center">
   <tr>
     <th width="48%" scope="col"></th>
@@ -110,7 +111,7 @@ function change(Dtype){
   <tr>
     <td>Department	: </td>
     <td width="52%"><select name="Dtype" onChange="change(this);">
-    <option value="0" name="department" id="department" selected>select..</option>
+    <option value="0" selected>select..</option>
     <?php
     if($departments)
     {
@@ -154,7 +155,7 @@ function change(Dtype){
   </tr>
   <tr>
     <td>&nbsp;</td>
-    <td><button class="button" onClick="return(validate());">submit</button></td>
+    <td><button class="button" onclick="return(validate());">submit</button></td>
   </tr>
   <tr>
     <td>&nbsp;</td>
