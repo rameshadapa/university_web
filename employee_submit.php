@@ -19,13 +19,11 @@ use Aws\Exception\AwsException;
     $key = 'uploads/users' . '/' . random_string();
 
     try {
+        $provider = CredentialProvider::defaultProvider();	
         $s3Client = new S3Client([
             'version' => 'latest',
             'region' => 'ap-south-1',
-            'credentials' => [
-                'key' => 'key_here',
-                'secret' => 'secret_here'
-            ],
+            'credentials' => $provider,
             'scheme' => 'http',
             'retries' => 11,
         ]);
@@ -44,7 +42,7 @@ use Aws\Exception\AwsException;
     if(register_employee($firstName, $lastName, $sex, $userType, $qualification, $emailid, $mobileno, $dob, $key) == true)
     {
         echo "<h3>Registration success<br /></h3>";
-        echo "<h3>Register another employee <a href='./employee.html'>here</a>.</h3>";
+        echo "<h3>Register another employee <a href='./EmployeeRegistration.html'>here</a>.</h3>";
     } 
     else {
         echo "Some problem while registring.";

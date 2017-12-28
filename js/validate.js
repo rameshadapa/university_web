@@ -1,107 +1,190 @@
-//<script type="text/javascript">
 function validate()
-{ 
-   if( document.StudentRegistration.textnames.value == "" )
-   {
-     alert( "Please provide your Name!" );
-     document.StudentRegistration.textnames.focus() ;
-     return false;
-   }
-   if( document.StudentRegistration.fathername.value == "" )
-   {
-     alert( "Please provide your Father Name!" );
-     document.StudentRegistration.fathername.focus() ;
-     return false;
-   }
+{
+     var photo =document.getElementById("photo").value;
+     if(photo!='')
+     {
+           var checkimg = photo.toLowerCase();
+          if (!checkimg.match(/(\.jpg|\.png|\.JPG|\.PNG|\.jpeg|\.JPEG|\.mp4|\.MP4|\.flv|\.FLV|\.mkv|\.MKV)$/)){ // validation of file extension using regular expression before file upload
+              document.getElementById("photo").focus();
+              document.getElementById("errorName5").innerHTML="Wrong file selected"; 
+              return false;
+           }
+            var img = document.getElementById("photo"); 
+            alert(img.files[0].size);
+            if(img.files[0].size >=  500000)  // validation according to file size
+            {
+     alert( "This photo size above 500kb please upload below 500kb photo " );
+            return false;
+             }
+             return true;
+      }   
    
-   if( document.StudentRegistration.paddress.value == "" )
+   
+   
+   
+   
+   var dob = document.getElementById("dob").value;
+        var pattern = /^\d{1,2}\/\d{1,2}\/\d{4}$/;   //defining pattern for date
+        if (pattern.test(dob))
+		 {
+            alert("Entered date : "+dob);
+            return true;
+        } 
+            alert("Invalid date format.Please Input in (dd/mm/yyyy) format!");
+            return false;
+   
+   
+   
+   
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+   if( document.student_registration.firstname.value == "" )
    {
-     alert( "Please provide your Postal Address!" );
-     document.StudentRegistration.paddress.focus() ;
+     alert( "Please provide your First Name!" );
+     document.student_registration.firstname.focus() ;
      return false;
    }
-   if( document.StudentRegistration.personaladdress.value == "" )
+   if( document.student_registration.lastname.value == "" )
    {
-     alert( "Please provide your Personal Address!" );
-     document.StudentRegistration.personaladdress.focus() ;
+     alert( "Please provide your Last Name!" );
+     document.student_registration.lastname.focus() ;
      return false;
    }
-   if ( ( StudentRegistration.sex[0].checked == false ) && ( StudentRegistration.sex[1].checked == false ) )
+   if ( ( student_registration.sex[0].checked == false ) && ( student_registration.sex[1].checked == false ) )
    {
-   alert ( "Please choose your Gender: Male or Female" );
-   return false;
+    alert ( "Please choose your Gender: Male or Female" );
+    return false;
    }   
-   if( document.StudentRegistration.City.value == "-1" )
-   {
-     alert( "Please provide your City!" );
-     document.StudentRegistration.City.focus() ;
-     return false;
-   }   
-   if( document.StudentRegistration.Course.value == "-1" )
-   {
-     alert( "Please provide your Course!" );
-    
-     return false;
-   }   
-   if( document.StudentRegistration.District.value == "-1" )
-   {
-     alert( "Please provide your Select Distric!" );
-    
-     return false;
-   }   
-   if( document.StudentRegistration.State.value == "-1" )
-   {
-     alert( "Please provide your Select State!" );
-     
-     return false;
-   }
-   if( document.StudentRegistration.pincode.value == "" ||
-           isNaN( document.StudentRegistration.pincode.value) ||
-           document.StudentRegistration.pincode.value.length != 6 )
-   {
-     alert( "Please provide a pincode in the format ######." );
-     document.StudentRegistration.pincode.focus() ;
-     return false;
-   }
- var email = document.StudentRegistration.emailid.value;
+  var email = document.student_registration.emailid.value;
   atpos = email.indexOf("@");
   dotpos = email.lastIndexOf(".");
- if (email == "" || atpos < 1 || ( dotpos - atpos < 2 )) 
- {
-     alert("Please enter correct email ID")
-     document.StudentRegistration.emailid.focus() ;
-     return false;
- }
-  if( document.StudentRegistration.dob.value == "" )
-   {
+  if (email == "" || atpos < 1 || ( dotpos - atpos < 2 )) 
+  {
+      alert("Please enter correct email ID")
+      document.student_registration.emailid.focus() ;
+      return false;
+  }
+  if( document.student_registration.dob.value == "" )
+  {
      alert( "Please provide your DOB!" );
-     document.StudentRegistration.dob.focus() ;
+     document.student_registration.dob.focus() ;
      return false;
-   }
-  if( document.StudentRegistration.mobileno.value == "" || isNaN( document.StudentRegistration.mobileno.value) ||
-           document.StudentRegistration.mobileno.value.length != 10 )
+  }
+  if( document.student_registration.mobileno.value == "" || isNaN( document.student_registration.mobileno.value))
    {
      alert( "Please provide a Mobile No in the format 123." );
-     document.StudentRegistration.mobileno.focus() ;
+     document.student_registration.mobileno.focus() ;
      return false;
    }
    
-
-
-  if( document.StudentRegistration.photo.value == "" )
+  if( document.student_registration.photo.value == "" )
    {
      alert( "Please provide your Photo!" );
-     document.StudentRegistration.photo.focus() ;
-     return false;
-   }
-if( document.StudentRegistration.SF.value == "" )
-   {
-     alert( "Please Scan your FingerPrint!" );
-     document.StudentRegistration.SF.focus() ;
+     document.student_registration.photo.focus() ;
      return false;
    }
 
+   var firstName = document.student_registration.firstname.value;
+   var lastName = document.student_registration.lastname.value;
+   var sex = (student_registration.sex[0].checked) ? 'M' : 'F';
+   var emailId = document.student_registration.emailid.value;
+   var dob = document.student_registration.dob.value;
+   var mobileno = document.student_registration.mobileno.value;  
+   var photo = document.student_registration.photo.value;
+   var fingerPrint = document.student_registration.SF.value;
 
+   document.student_registration.submit();
+}
 
+function Capture()
+{
+  try {
+//    document.StudentRegistration.SF.value = "";
+    var res = CaptureFinger(60, 10); // 60 Quality, 10sec timeout.
+    if(res.data.ErrorCode == "0")
+    {
+      document.student_registration.imgFinger.src = "data:image/bmp;base64, " + res.data.BitmapData;
+      document.student_registration.SF.value = res.data.IsoTemplate;
+    }
+    else
+    {
+      alert("Error: " + res.err);
+    }
+  }
+  catch(e)
+  {
+    alert("Exception: " + e);
+  }
+  return false;
 }
 //</script>
+
+function CaptureForPrintHT()
+{
+  try {
+    var res = CaptureFinger(60, 10); // 60 Quality, 10sec timeout.
+    if(res.data.ErrorCode == "0")
+    {
+      document.print_ht_form.imgFinger.src = "data:image/bmp;base64, " + res.data.BitmapData;
+      document.print_ht_form.fingerbase64.value = res.data.IsoTemplate;
+    }
+    else
+    {
+      alert("Error: " + res.err);
+    }
+  }
+  catch(e)
+  {
+    alert("Exception: "+e);
+  }
+  return false;
+}
+
+function validatePrintHT()
+{
+  document.print_ht_form.submit();
+  return true;
+}
+
+function MatchFingerPrint(isoTemlate)
+{
+  try {
+    var res = MatchFinger(60, 10, isoTemlate);
+    if(res.data.Status)
+    {
+      alert("FingersMatched");
+    }
+    else
+    {
+      if(res.data.ErrorCode != "0")
+      {
+        alert(res.data.ErrorDescription);
+      }
+      else
+      {
+        alert("Fingers does not matched.");
+      }
+    }
+  }
+  catch(e)
+  {
+    alert("Exception: "+e);
+  }
+  return false;
+}

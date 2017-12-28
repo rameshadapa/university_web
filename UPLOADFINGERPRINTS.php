@@ -23,19 +23,16 @@ if(isset($_POST['SID']))
   if($key != null)
   {
     try {
+      $provider = CredentialProvider::defaultProvider();	
       $s3Client = new S3Client([
         'version' => 'latest',
         'region' => 'ap-south-1',
-        'credentials' => [
-            'key' => 'key_here',
-            'secret' => 'secret_here'
-        ],
+        'credentials' => $provider,
         'scheme' => 'http',
         'retries' => 11,
       ]);
     
       $studentPhoto = $s3Client->getObjectUrl($bucket, $key);
-      echo $studentPhoto;
     } catch(S3Exception $e)
     {
       echo "Exception: $e->getMessage()\n";

@@ -13,16 +13,14 @@ if(isset($_POST['Dtype']) &&
 
 
     $bucket = "user-resources-bucket";
-    $key = 'uploads/users' . '/' . random_string();
+    $key = 'uploads/courses' . '/' . random_string();
 
     try {
+        $provider = CredentialProvider::defaultProvider();	
         $s3Client = new S3Client([
             'version' => 'latest',
             'region' => 'ap-south-1',
-            'credentials' => [
-                'key' => 'key_here',
-                'secret' => 'secret_here'
-            ],
+            'credentials' => $provider,
             'scheme' => 'http',
             'retries' => 11,
         ]);

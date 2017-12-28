@@ -66,7 +66,7 @@ if(!isset($_SESSION['userid']))
   </tr>
   <?php if($_SESSION['utype'] == 0) { ?>
   <tr>
-    <td height="43"> <p><a href="employee.html" target="myframe">
+    <td height="43"> <p><a href="EmployeeRegistration.html" target="myframe">
       <img src="img/emp11.png" width="100%" height="48"/></a><br>
       </p></td>
   </tr>
@@ -102,7 +102,7 @@ if(!isset($_SESSION['userid']))
   </tr>
   <?php } ?>
   <tr>
-    <td height="43"><a href="studentview.php" target="myframe">
+    <td height="43"><a href="Viewcoursedetails.html" target="myframe">
     <img src="img/ViewCourseDetails1.png" width="100%" height="48"/></a></td>
   </tr>
   <tr>

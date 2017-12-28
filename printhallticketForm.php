@@ -20,7 +20,7 @@
               <input type="text" name="emailid" id="emailid" size="30"><br>
             Scan your finger:<img name="imgFinger" id="imgFinger" width="145px" height="188px" alt="Finger image." />
             <input type="hidden" name="fingerbase64" id="fingerbase64"
-             size="30" value="Rk1SACAyMAAAAAFcAAABPAFiAMUAxQEAAAAoNUCNAMeAZEDcAN7eZEDjAK3oXUBkALSCXUDuAKNrXUBlAPKbZEBRALQCXYEIAOnWZEBGAJyJSUEZAObdXUBgAGN9ZEDLAT6zXYElANtiXUC0ADlqXUBxAUnQPEBDAFL6ZEEMAUbCZIDbABlpZEDIAOxpZEDGAPrXZEDnAMpsZEDwALZoXUCFAQuuXUCNARHEXUEIALviXYBvARq7ZEBPAJIfUEDMAFN0XUAyAOCfZED4ASfIV4BoAFV5ZEDlAUbAXUDyAUu8L0BmADd2ZECVAB3qZIEDACVkV0BxAL+EZICjAIlzZICKAQGTXUC3AHfuZEDBAQ9eZEDEAHBwZIBdAI2GUEEDAPRaZIDAAFL2XUCEATTXXUEKARXRV0BXASS7ZEBCARizZEBhAUHEXYEJAExrZEBUAUQ/ZIB6ACFuZAAA">
+             size="30" value="">
             <br />
             <button class="btn btn-primary" onClick="return CaptureForPrintHT();"><strong>scan</strong></button>
             <br /><br />

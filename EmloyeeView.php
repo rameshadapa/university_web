@@ -1,5 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>KKHSOU EmployeeView</title>
 <head>
 
 
@@ -236,13 +238,11 @@ if(isset($_POST['eid']))
   if($key != null)
   {
     try {
+	  $provider = CredentialProvider::defaultProvider();	
       $s3Client = new S3Client([
         'version' => 'latest',
         'region' => 'ap-south-1',
-        'credentials' => [
-            'key' => 'key_here',
-            'secret' => 'secret_here'
-        ],
+        'credentials' => $provider,
         'scheme' => 'http',
         'retries' => 11,
       ]);
@@ -263,12 +263,12 @@ if(isset($_POST['eid']))
 </div>
 <div class="absolute1">
 <form method="post" action="<?=$_SERVER['PHP_SELF'];?>">
-<table width="532" border="1">
+<table width="56%" height="133" border="0" align="center">
   <tr>
-    <th width="127" scope="col">EmployeeID</th>
-    <th width="144" scope="col"><label for="sid"></label>
+    <th width="130" height="127" scope="col">Employee Mail-ID</th>
+    <th width="158" scope="col"><label for="sid"></label>
       <input type="text" name="eid" id="eid" /></th>
-    <th width="239" scope="col"><button class="button"><strong>Submit</strong></button></th>
+    <th width="200" scope="col"><button class="button"><strong>Submit</strong></button></th>
   </tr>
 </table>
 </form>
@@ -277,7 +277,7 @@ if(isset($_POST['eid']))
 </div>
 <div class="flex-container">
 <?php if(isset($employee) && $employee != null) { ?>
-    <table width="100%" border="1">
+    <table width="100%" border="1" align="center" >
       <tr>
         <th width="15%" scope="col">EmployeeId</th>
         <th width="14%" scope="col">2</th>
