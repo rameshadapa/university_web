@@ -74,15 +74,15 @@ if($courses)
 {
   while($row = $courses->fetch())
   { ?>
-    if(arr.hasOwnProperty('<?=$row[5];?>'))
+    if(arr.hasOwnProperty('<?=$row[4];?>'))
     {
-      arr['<?=$row[5];?>']['<?=$row[0];?>'] = '<?=$row[1];?>';
+      arr['<?=$row[4];?>']['<?=$row[0];?>'] = '<?=$row[1];?>';
     }
     else
     {
       var h = new Object();
       h['<?=$row[0];?>'] = '<?=$row[1];?>';
-      arr['<?=$row[5];?>'] = h;
+      arr['<?=$row[4];?>'] = h;
     }
 <?php }
 }

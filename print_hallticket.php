@@ -48,8 +48,6 @@ if(isset($_POST['emailid']) && isset($_POST['fingerbase64']))
 function VerifyFingerPrint(inputIsoTemplate, dbIsoTemplate)
 {
   try {
-    alert(inputIsoTemplate);
-    alert(dbIsoTemplate);
     var res = VerifyFinger(inputIsoTemplate, dbIsoTemplate);
     if(res.httpStatus)
     {
