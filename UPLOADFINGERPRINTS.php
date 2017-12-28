@@ -9,6 +9,7 @@
 include_once("utility_config.php");
 require './vendor/autoload.php';
 
+use Aws\Credentials\CredentialProvider;
 use Aws\S3\S3Client;
 use Aws\Exception\AwsException;
 
