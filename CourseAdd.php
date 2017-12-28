@@ -65,15 +65,14 @@ if(isset($_POST['department']) && isset($_POST['course']) && isset($_POST['cdura
   }
 }
 ?>
-<div class="dept">
   <p>
   <h1 align="center">Add Course</h1>
   <div align="center">
     <form method="post" action="<?=$_SERVER['PHP_SELF'];?>">
-    <table width="41%" border="1">
+    <table width="26%" border="1">
       <tr>
-        <th width="35%" scope="col">Department</th>
-        <th width="65%" scope="col">
+        <th width="39%" scope="col">Department</th>
+        <th width="61%" scope="col">
           <select name="department">
             <?php while($row = $departments->fetch()) {
             ?>
@@ -83,8 +82,8 @@ if(isset($_POST['department']) && isset($_POST['course']) && isset($_POST['cdura
         </th>
       </tr>
       <tr>
-        <th width="35%" scope="col">Course Name</th>
-        <th width="65%" scope="col">
+        <th width="39%" scope="col">Course Name</th>
+        <th width="61%" scope="col">
           <label for="course"></label>
           <input type="text" name="course" id="course">
         </th>
@@ -113,22 +112,25 @@ if(isset($_POST['department']) && isset($_POST['course']) && isset($_POST['cdura
     </table>
   </form>
   </div>
-  <p align="center">&nbsp; </p>
-</div>
 
 
 
 
 
-
-<div class="pagination">
+<table width="100%" border="1">
+<tr>
+<td>
+ <div class="pagination">
   
   <a  href="DeptAdd.php">Department</a>
   <a class="active" href="CourseAdd.php">Course</a>
   <a href="SubjectAdd.php">Subject</a>
   
 </div>
+</td></tr>
 <?php if($courses) { ?>
+<tr>
+  <td>
   <div class="footer">
     <?php
       while($row = $courses->fetch())
@@ -138,6 +140,9 @@ if(isset($_POST['department']) && isset($_POST['course']) && isset($_POST['cdura
       }
     ?>
 </div>
+    </td>
+    </tr>
 <?php } ?>
+    </table>
 </body>
 </html>

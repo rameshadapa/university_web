@@ -64,12 +64,16 @@ function load()
     <table width="100%" height="324" border="1"  align="center" bordercolor="#000035">
   <tr>
     <th height="283" scope="col">
-    
+    <form method="post" action="upload_fingerprints.php">
     ScanUrFinger <img name="imgFinger" id="imgFinger" width="145px" height="188px" alt="Finger image." />
     <input type="hidden" name="fingerbase64" id="fingerbase64" size="30">
+    <?php if(isset($studentId)) { ?>
+    <input type="hidden" name="user_id" id="user_id" value="<?=$studentId;?>" />
+    <?php } ?>
     <br />
     <button class="btn btn-primary" onClick="return CaptureForPrintHT();"><strong>scan</strong></button><br/><br/>
-      <input type="button" value="UploadFingerPrints" />
+      <input type="submit" value="UploadFingerPrints" />
+  </form>
     </th>
   </tr>
   <tr>

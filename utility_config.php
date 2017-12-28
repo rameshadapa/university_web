@@ -80,6 +80,26 @@ function register_student(
     }
     return false;
 }
+function update_student_fp($emailId, $fingerprint)
+{
+    try {
+        $myPdo = new PDO('mysql:host=localhost;dbname=university_data', 'root', 'RameshAdapa@1');
+        $query = "UPDATE student_table SET student_fingerprint='$fingerprint' WHERE student_userid='$emailId';";
+        $result = $myPdo->query($query);
+        if($result == true)
+        {
+#            echo $result;
+            return true;
+        }
+        return false;
+    }
+    catch(PDOException $e)
+    {
+        echo 'Connection failed: ' . $e->getMessage();
+        return false;
+    }
+    return false;
+}
 function register_employee(
     $firstname, $lastname,
     $sex, $userType, $qualification,
@@ -91,7 +111,7 @@ function register_employee(
     $tmppwd = '';
     for($i=0; $i<7; $i++)
     {
-        $tmppwd .= $chars[rand(0, strlen($chars))];
+        $tmppwd .= $chars[rand(0, strlen($chars)-1)];
     }
     try {
         $myPdo = new PDO('mysql:host=localhost;dbname=university_data', 'root', 'RameshAdapa@1');

@@ -63,12 +63,12 @@ if(isset($_POST['sbj']))
   }
 }
 ?>
-<div class="dept">
+
   <p>
   <h1 align="center">Add Subject</h1>
   <div align="center">
     <form method="post" action="<?=$_SERVER['PHP_SELF'];?>">
-    <table width="41%" border="1">
+    <table width="41%" border="1" bgcolor="#000060">
       <tr>
         <th width="35%" scope="col">Subject</th>
         <th width="65%" scope="col">
@@ -85,16 +85,20 @@ if(isset($_POST['sbj']))
     </table>
   </form>
   </div>
-  <p align="center">&nbsp; </p>
-</div>
+
+<table width="100%" border="1">
+<tr>
+  <td>
 <div class="pagination">
   <a  href="DeptAdd.php">Department</a>
   <a  href="CourseAdd.php">Course</a>
   <a class="active" href="SubjectAdd.php">Subject</a>
 </div>
-
+</td>
+</tr>
 <?php if($subjects) { ?>
-<div class="footer">
+<tr>
+<td>
   <?php
     while($row = $subjects->fetch())
     { ?>
@@ -102,7 +106,9 @@ if(isset($_POST['sbj']))
   <?php
     }
   ?>
-</div>
+</td>
+</tr>
 <?php } ?>
+</table>
 </body>
 </html>
