@@ -58,7 +58,7 @@ Website: www.kkhsou.com </th>
 <tr>
   <th width="20%" height="54" scope="col"><a href="Elearningvideos.html"><img src="img/home-imgs/Elearning.png" width="206" height="48" alt="Elearning" /></a></th>
   <th width="20%" scope="col"><a href="coursedetails.html"><img src="img/home-imgs/coursedetails.png" width="206" height="48" alt="courseDetails" /></a></th>
-  <th width="20%" scope="col"><a href="printhallticketForm.php"><img src="img/home-imgs/Printhallticket.png" width="206" height="48" alt="Printhallticket" /></a></th>
+  <th width="20%" scope="col"><a href="homePrintHT.html"><img src="img/home-imgs/Printhallticket.png" width="206" height="48" alt="Printhallticket" /></a></th>
   <th width="20%" scope="col"><img src="img/home-imgs/OfflineVideos.png" width="206" height="48" alt="offlineVideos" /></th>
   <th width="20%" scope="col"><a href="userlogin.php"><img src="img/home-imgs/login.png" width="206" height="48" alt="login" /></a></th>
 </tr>
