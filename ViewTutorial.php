@@ -17,7 +17,7 @@ if(isset($_POST['sbj']))
 $subjects = all_subjects();
 ?>
 <form method="post" action="<?=$_SERVER['PHP_SELF'];?>">
-<table width="100%" border="1" bgcolor="#000060" >
+<table width="100%" border="0" bgcolor="#000035" >
   <tr>
     <th scope="col"><h1>ViewTutorial</h1>
     <p align="left">Subject
