@@ -42,7 +42,7 @@ $subjects = all_subjects();
       </tr>
       <tr>
         <?php if(isset($subject_stream) && $subject_stream != "") { ?>
-          <td><iframe width="800" height="415" src="<?=$subject_stream;?>" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe></td>
+          <td><iframe width="960" height="640" src="<?=$subject_stream;?>" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe></td>
         <?php } else { ?>
         <td>No streams available.</td>
         <?php } ?>

@@ -102,6 +102,7 @@ function change(Dtype){
 </head>
 
 <body bgcolor="#000035">
+<h1 align="center" style="color:white;">Course Details</h1>
 <table width="100%"  cellpadding="10" cellspacing="0" border="0">
   <tr>
 
