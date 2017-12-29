@@ -48,6 +48,7 @@ $subjects = all_subjects();
       <td>Select Subjects</td>
       <td><label for="sbj"></label>
         <select name="sbj" id="sbj">
+        <option value="-1" selected>-Select-</option>
         <?php
           while($row = $subjects->fetch())
           { ?>

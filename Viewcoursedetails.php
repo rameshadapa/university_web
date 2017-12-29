@@ -62,12 +62,12 @@ if($courses)
 ?>
 function change(Dtype){
   var comboValue = Dtype.value;
-  document.forms["coursesUploadd"].elements["SC"].options.length=0;
+  document.forms["courseDetails"].elements["SC"].options.length=0;
   for (var k in arr[comboValue]){
     var option = document.createElement("option");
     option.setAttribute('value',k);
     option.innerHTML = arr[comboValue][k];
-    document.forms["coursesUploadd"].elements["SC"].appendChild(option);
+    document.forms["courseDetails"].elements["SC"].appendChild(option);
   }
 }
 </script>
@@ -80,7 +80,8 @@ function change(Dtype){
 <!-- ============ HEADER SECTION ============== -->
 <td height="100" bgcolor="#000035" style="height: 20px;"><table width="100%" border="0">
   <tr>
-      <th width="19%" scope="col"><a href="1home.html"><img src="img/button_home.png" width="127" height="70" alt="home"></a></th>
+      <th width="19%" scope="col"><a href="javascript:history.back()"><img src="img/button_home.png" width="127" height="70" alt="home"></a></th>
+      <form method="post" name="courseDetails" id="courseDetails" action="<?=$_SERVER['PHP_SELF'];?>">
       <th width="26%" height="76" scope="col">Department 
         <select name="Dtype" onChange="change(this);">
           <option value="0" selected>-Select-</option>
@@ -96,10 +97,11 @@ function change(Dtype){
           ?>
           </select></th>
       <th width="20%" scope="col"><p> Courses
-        <select name="SC">
+        <select name="SC" id="SC">
             <option value="0">-Select-</option>
           </select>
     </p></th>
+        </form>
       <th width="17%" scope="col"><a href="1home.html" target="myframe"><img src="img/home-imgs/submit.png" width="127" height="70" alt="submit"></a></th>
 
 
