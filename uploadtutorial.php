@@ -15,25 +15,25 @@ table{
 <div align="center">
 <?php
 include_once("utility_config.php");
-if(isset($_POST['sub']) && isset($_POST['url']))
+if(isset($_POST['sbj']) && isset($_POST['url']))
 {
-  $subject = $_POST['sub'];
+  $subject = $_POST['sbj'];
   $url = $_POST['url'];
   $status = '';
   if($url != "")
   {
     if(update_subject_resource($subject, $url))
     {
-      $status = "<p style='color:green'>Course uploaded successfully.</p>";
+      $status = "<p style='color:green;'>Course uploaded successfully.</p>";
     }
     else
     {
-      $status = "<p style='color:red'>Invalid subject.</p>";
+      $status = "<p style='color:red;'>Invalid subject.</p>";
     }
   }
   else 
   {
-    $status = "<p style='color:red'>Empty resource link.</p>";
+    $status = "<p style='color:red;'>Empty resource link.</p>";
   }
 }
 $subjects = all_subjects();

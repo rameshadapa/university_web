@@ -101,25 +101,25 @@ function change(Dtype){
             <option value="0">-Select-</option>
           </select>
     </p></th>
-        </form>
-      <th width="17%" scope="col"><a href="1home.html" target="myframe"><img src="img/home-imgs/submit.png" width="127" height="70" alt="submit"></a></th>
-
-
-
-
-<table width="100%" border="1" bgcolor="#000000" align="center">
-  <tr>
-      <td width="100%" height="600px" align="center"><iframe  width="100%" height="50%" src="https://www.youtube.com/embed/ga5la55t4-M?autoplay=1" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen name="myframe"></iframe>
-      
-      
-      </td>
+      <th width="17%" scope="col">
+        <!-- <a href="1home.html" target="myframe"><img src="img/home-imgs/submit.png" width="127" height="70" alt="submit"></a> -->
+        <input type="submit" name="submit" id="submit" value="Submit" />
+      </th>
+    </form>
+    <table width="100%" border="1">
+    <tr>
+      <th width="24%" scope="col">Course</th>
+      <th width="24%" scope="col">year</th>
+      <th width="25%" scope="col">Description</th>
+      <th width="27%" scope="col">image</th>
     </tr>
-</table>
-
-
-
-
-    
+    <tr>
+      <th scope="col">&nbsp;</th>
+      <th scope="col">&nbsp;</th>
+      <th scope="col">&nbsp;</th>
+      <th scope="col">&nbsp;</th>
+    </tr>
+  </table>
 </table>
  </td>
 </tr></table>
