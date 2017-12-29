@@ -26,7 +26,7 @@ img:hover{
   function noBack() { window.history.forward(); }
 </script>
 </head>
-<body  bgcolor="#fff" onload="noBack();"
+<body  bgcolor="#000040" onload="noBack();"
   onpageshow="if (event.persisted) noBack();" onunload="">
 <?php
 include_once('utility_config.php');
@@ -56,7 +56,7 @@ Website: www.kkhsou.com </th>
 </tr> 
 <table width="100%"  border="0" bgcolor="#000035">
 <tr>
-  <th width="20%" height="54" scope="col"><a href="Elearningvideos.html"><img src="img/home-imgs/Elearning.png" width="206" height="48" alt="Elearning" /></a></th>
+  <th width="20%" height="54" scope="col"><a href="homeviewtutorial.html"><img src="img/home-imgs/Elearning.png" width="206" height="48" alt="Elearning" /></a></th>
   <th width="20%" scope="col"><a href="homeviewcourse.html"><img src="img/home-imgs/coursedetails.png" width="206" height="48" alt="courseDetails" /></a></th>
   <th width="20%" scope="col"><a href="homePrintHT.html"><img src="img/home-imgs/Printhallticket.png" width="206" height="48" alt="Printhallticket" /></a></th>
   <th width="20%" scope="col"><img src="img/home-imgs/OfflineVideos.png" width="206" height="48" alt="offlineVideos" /></th>
