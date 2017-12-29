@@ -40,6 +40,10 @@ if(isset($_POST['emailid']) && isset($_POST['fingerbase64']))
       }
     }
 }
+else
+{
+    exit(header("Location: ./printhallticketForm.php?error='Invalid user or finger prints not matched.'"));
+}
 ?>
 <script type="text/javascript" src="jquery-1.8.2.js"></script>
 <script type="text/javascript" src="mfs100-9.0.2.6.js"></script>

@@ -37,8 +37,8 @@ function upload_courses(
     try {
         $myPdo = new PDO('mysql:host=localhost;dbname=university_data', 'root', 'RameshAdapa@1');
         $query = "INSERT INTO course_details(course_det_year, course_det_desc,
-            course_id, course_dept, course_doa) VALUES(
-            '$year', '$desc', '$course', '$dept', now());";
+            course_id, course_dept, course_det_res, course_doa) VALUES(
+            '$year', '$desc', '$course', '$dept', '$imgKey', now());";
         $result = $myPdo->query($query);
         if($result == true)
         {

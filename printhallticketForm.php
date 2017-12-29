@@ -11,6 +11,12 @@
     <script type="text/javascript" src="./validate.js"></script>
     </head>
     <body bgcolor="#000035">
+    <?php
+      if(isset($_GET['error']))
+      {
+        $error = $_GET['error'];
+      }
+    ?>
     <h1 align="center"> PrintHallTicket</h1>
     <table width="100%" border="1"  align="center" bordercolor="#000035">
   <tr bgcolor="#000070">
@@ -23,7 +29,12 @@
              size="30" value="">
             <br />
             <button class="btn btn-primary" onClick="return CaptureForPrintHT();"><strong>scan</strong></button>
-            <br /><br />
+            <br />
+            <?php if(isset($error)) { ?>
+              <p style='color:red'><?=$error;?></p>
+            <?php } else { ?>
+            <br />
+            <?php } ?>
             <input type="button" value="Submit Form" onClick="return(validatePrintHT());"/>
       </form>  
     </th>

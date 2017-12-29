@@ -62,7 +62,7 @@ if(isset($_POST['dept']))
 }
 $departments = all_departments();
 ?>
-  <form method="post" action="<?=$_SERVER['../coursedetails/PHP_SELF'];?>">
+  <form method="post" action="<?=$_SERVER['PHP_SELF'];?>">
 
   <div align="center">
     <table width="30%" border="1" bgcolor="#000060">
