@@ -27,7 +27,7 @@ $subjects = all_subjects();
         <?php
           while($row = $subjects->fetch())
           { ?>
-            <option value='<?=$row[3];?>' ><?=$row[1];?></option>
+            <option value='<?=$row[2];?>' ><?=$row[1];?></option>
         <?php
           }
         ?>

@@ -16,7 +16,7 @@ strong{color: #FFF;}
 <link href="css/login_home_css.css" rel="stylesheet">
 </head>
 
-<body style="margin: 0px; padding: 0px; font-family: 'Trebuchet MS',verdana;">
+<body style="background: #000040; margin: 0px; padding: 0px; font-family: 'Trebuchet MS',verdana;">
 <?php
 include_once("utility_config.php");
 
