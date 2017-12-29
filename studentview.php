@@ -40,7 +40,7 @@ if(isset($_POST['sid']))
   
   $bucket = "user-resources-bucket";
   $key = $student[7];
-  if($key != null)
+  if($key != null && $key != "")
   {
     try {
       $provider = CredentialProvider::defaultProvider();	
@@ -53,7 +53,6 @@ if(isset($_POST['sid']))
       ]);
     
       $studentPhoto = $s3Client->getObjectUrl($bucket, $key);
-      echo $studentPhoto;
     } catch(S3Exception $e)
     {
         echo "Exception: $e->getMessage()\n";
@@ -96,7 +95,13 @@ if(isset($_POST['sid']))
         <th scope="col"><?=$student[4];?></th>
         <th scope="col"><?=$student[5];?></th>
         <th scope="col"><?=$student[6];?></th>
-        <th scope="col"><?=$student[7];?></th>
+        <th scope="col">
+          <?php if(isset($studentPhoto)) { ?>
+            <image src="<?=$studentPhoto;?>" name="Simage" width="145px" height="188px" alt="studentImage" />
+          <?php } else { ?>
+          Photo not available.
+          <?php } ?>
+        </th>
         <th scope="col"><?=$student[9];?></th>
       </tr>
     </table>

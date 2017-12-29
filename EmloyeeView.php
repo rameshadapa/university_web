@@ -236,7 +236,7 @@ if(isset($_POST['eid']))
   
   $bucket = "user-resources-bucket";
   $key = $employee[9];
-  if($key != null)
+  if($key != null && $key != "")
   {
     try {
 	  $provider = CredentialProvider::defaultProvider();	
@@ -249,7 +249,6 @@ if(isset($_POST['eid']))
       ]);
     
       $employeePhoto = $s3Client->getObjectUrl($bucket, $key);
-      echo $employeePhoto;
     } catch(S3Exception $e)
     {
         echo "Exception: $e->getMessage()\n";
@@ -299,7 +298,13 @@ if(isset($_POST['eid']))
         <th scope="col"><?=$employee[6];?></th>
         <th scope="col"><?=$employee[7];?></th>
         <th scope="col"><?=$employee[8];?></th>
-        <th scope="col"><?=$employee[9];?></th>
+        <th scope="col">
+          <?php if(isset($employeePhoto)) { ?>
+            <image src="<?=$employeePhoto;?>" name="Simage" width="145px" height="188px" alt="employee image." />
+          <?php } else { ?>
+          Photo not available.
+          <?php } ?>
+        </th>
       </tr>
     </table>
     <?php } else { ?>

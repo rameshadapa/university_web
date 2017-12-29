@@ -102,7 +102,7 @@ if(!isset($_SESSION['userid']))
   </tr>
   <?php } ?>
   <tr>
-    <td height="43"><a href="Viewcoursedetails.html" target="myframe">
+    <td height="43"><a href="Viewcoursedetails.php" target="myframe">
     <img src="img/ViewCourseDetails1.png" width="100%" height="48"/></a></td>
   </tr>
   <tr>
