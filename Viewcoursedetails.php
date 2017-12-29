@@ -137,7 +137,6 @@ function change(Dtype){
     <table width="100%" border="1">
     <tr>
       <th width="24%" scope="col">Course</th>
-      <th width="24%" scope="col">year</th>
       <th width="25%" scope="col">Description</th>
       <th width="27%" scope="col">image</th>
     </tr>
@@ -145,7 +144,6 @@ function change(Dtype){
         <?php while($row = $course_details->fetch()) { ?>
         <tr>
         <th scope="col"><?=$row[3];?></th>
-        <th scope="col"><?=$row[1];?></th>
         <th scope="col"><?=$row[2];?></th>
         <?php
           try {
@@ -168,7 +166,6 @@ function change(Dtype){
         <?php } ?>
       <?php } else { ?>
         <tr>
-        <th scope="col">&nbsp;</th>
         <th scope="col">&nbsp;</th>
         <th scope="col">&nbsp;</th>
         <th scope="col">&nbsp;</th>

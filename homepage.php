@@ -110,7 +110,7 @@ if(!isset($_SESSION['userid']))
     <img src="img/AddDepartment.jpeg" width="100%" height="48"/></a></td>
   </tr>
   <tr>
-    <td height="43"><a href="ViewTutorial.html" target="myframe"><img src="img/ViewTutorial1.png" width="100%" height="48"/></a></td>
+    <td height="43"><a href="ViewTutorial.php" target="myframe"><img src="img/ViewTutorial1.png" width="100%" height="48"/></a></td>
   </tr>
 </table>
 
