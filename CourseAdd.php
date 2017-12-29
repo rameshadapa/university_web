@@ -47,8 +47,6 @@ body,td,th {
 <body bgcolor="#000035">
 <?php
 include_once("utility_config.php");
-$departments = all_departments();
-$courses = all_courses();
 if(isset($_POST['department']) && isset($_POST['course']) && isset($_POST['cduration']))
 {
   $dept_id = $_POST['department'];
@@ -64,6 +62,8 @@ if(isset($_POST['department']) && isset($_POST['course']) && isset($_POST['cdura
     $dept_add_status = 'Error in adding department.';
   }
 }
+$departments = all_departments();
+$courses = all_courses();
 ?>
   <p>
   <h1 align="center">Add Course</h1>

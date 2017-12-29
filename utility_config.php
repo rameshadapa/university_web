@@ -100,6 +100,26 @@ function update_student_fp($emailId, $fingerprint)
     }
     return false;
 }
+function update_subject_resource($subjectId, $resource_url)
+{
+    try {
+        $myPdo = new PDO('mysql:host=localhost;dbname=university_data', 'root', 'RameshAdapa@1');
+        $query = "UPDATE subjects_table SET subject_resources='$resource_url' WHERE subject_id='$subjectId';";
+        $result = $myPdo->query($query);
+        if($result == true)
+        {
+#            echo $result;
+            return true;
+        }
+        return false;
+    }
+    catch(PDOException $e)
+    {
+        echo 'Connection failed: ' . $e->getMessage();
+        return false;
+    }
+    return false;
+}
 function register_employee(
     $firstname, $lastname,
     $sex, $userType, $qualification,

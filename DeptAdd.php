@@ -47,7 +47,6 @@ body,td,th {
 <body bgcolor="#000035">
 <?php
 include_once("utility_config.php");
-$departments = all_departments();
 if(isset($_POST['dept']))
 {
   $dept_name = $_POST['dept'];
@@ -61,6 +60,7 @@ if(isset($_POST['dept']))
     $dept_add_status = 'Error in adding department.';
   }
 }
+$departments = all_departments();
 ?>
   <form method="post" action="<?=$_SERVER['../coursedetails/PHP_SELF'];?>">
 

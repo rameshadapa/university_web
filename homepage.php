@@ -77,7 +77,7 @@ if(!isset($_SESSION['userid']))
   </tr>
   
   <tr>
-    <td height="43"><a href="uploadtutorial.html" target="myframe">
+    <td height="43"><a href="uploadtutorial.php" target="myframe">
     <img src="img/UploadTutorialsData.png" width="100%" height="48"/></a></td>
   </tr>
   <tr>

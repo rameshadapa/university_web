@@ -48,7 +48,6 @@ body,td,th {
 <body bgcolor="#000035">
 <?php
 include_once("utility_config.php");
-$subjects = all_subjects();
 if(isset($_POST['sbj']))
 {
   $subject_name = $_POST['sbj'];
@@ -62,6 +61,7 @@ if(isset($_POST['sbj']))
     $subject_add_status = 'Error in adding department.';
   }
 }
+$subjects = all_subjects();
 ?>
 
   <p>
