@@ -335,4 +335,19 @@ function all_subjects()
     }
     return false;
 }
+function course_details($deptId, $courseId)
+{
+    try {
+        $myPdo = new PDO('mysql:host=localhost;dbname=university_data', 'root', 'RameshAdapa@1');
+        $query = "SELECT * FROM course_details WHERE course_id='$courseId' AND course_dept='$deptId';";
+        $result = $myPdo->query($query);
+        return $result;
+    }
+    catch(PDOException $e)
+    {
+        echo 'Connection failed: ' . $e->getMessage();
+        return null;
+    }
+    return null;
+}
 ?>

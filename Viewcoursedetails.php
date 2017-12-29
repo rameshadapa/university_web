@@ -39,6 +39,12 @@ var arr = [];
 
 <?php
 include_once("utility_config.php");
+require './vendor/autoload.php';
+
+use Aws\Credentials\CredentialProvider;
+use Aws\S3\S3Client;
+use Aws\Exception\AwsException;
+
 $departments = all_departments();
 $courses = all_courses();
 
@@ -57,6 +63,28 @@ if($courses)
       arr['<?=$row[4];?>'] = h;
     }
 <?php }
+}
+
+if(isset($_POST['Dtype']) && isset($_POST['SC']))
+{
+  $department = $_POST['Dtype'];
+  $course = $_POST['SC'];
+  $course_details = course_details($department, $course);
+
+  $bucket = "user-resources-bucket";
+  try {
+    $provider = CredentialProvider::defaultProvider();	
+    $s3Client = new S3Client([
+      'version' => 'latest',
+      'region' => 'ap-south-1',
+      'credentials' => $provider,
+      'scheme' => 'http',
+      'retries' => 11,
+    ]);
+  } catch(S3Exception $e)
+  {
+      echo "Exception: $e->getMessage()\n";
+  }
 }
 
 ?>
@@ -113,12 +141,39 @@ function change(Dtype){
       <th width="25%" scope="col">Description</th>
       <th width="27%" scope="col">image</th>
     </tr>
-    <tr>
-      <th scope="col">&nbsp;</th>
-      <th scope="col">&nbsp;</th>
-      <th scope="col">&nbsp;</th>
-      <th scope="col">&nbsp;</th>
-    </tr>
+      <?php if(isset($course_details) && $course_details != null) { ?>
+        <?php while($row = $course_details->fetch()) { ?>
+        <tr>
+        <th scope="col"><?=$row[3];?></th>
+        <th scope="col"><?=$row[1];?></th>
+        <th scope="col"><?=$row[2];?></th>
+        <?php
+          try {
+            if($row[6] != null && $row[6] != "")
+            {
+              $key = $row[6];
+              $studentPhoto = $s3Client->getObjectUrl($bucket, $key); ?>
+              <th scope="col"><img src='<?=$studentPhoto;?>' /></th>
+            <?php }
+            else
+            { ?>
+              <th scope="col">No Image preview available.</th>
+            <?php }
+          } catch(S3Exception $e)
+          {
+              echo "Exception: $e->getMessage()\n";
+          }
+         ?>
+        </tr>
+        <?php } ?>
+      <?php } else { ?>
+        <tr>
+        <th scope="col">&nbsp;</th>
+        <th scope="col">&nbsp;</th>
+        <th scope="col">&nbsp;</th>
+        <th scope="col">&nbsp;</th>
+        </tr>
+      <?php } ?>
   </table>
 </table>
  </td>
