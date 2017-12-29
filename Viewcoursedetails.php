@@ -108,7 +108,7 @@ function change(Dtype){
 <!-- ============ HEADER SECTION ============== -->
 <td height="100" bgcolor="#000035" style="height: 20px;"><table width="100%" border="0">
   <tr>
-      <th width="19%" scope="col"><a href="javascript:history.back()"><img src="img/button_home.png" width="127" height="70" alt="home"></a></th>
+      <th width="19%" scope="col"></th>
       <form method="post" name="courseDetails" id="courseDetails" action="<?=$_SERVER['PHP_SELF'];?>">
       <th width="26%" height="76" scope="col">Department 
         <select name="Dtype" onChange="change(this);">
