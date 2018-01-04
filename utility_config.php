@@ -350,4 +350,42 @@ function course_details($deptId, $courseId)
     }
     return null;
 }
+
+function course_subject_add($course_id, $subject_id, $course_year)
+{
+    try {
+        $myPdo = new PDO('mysql:host=localhost;dbname=university_data', 'root', 'RameshAdapa@1');
+        $query = "INSERT INTO course_subject_table(course_id, subject_id, course_year)
+        VALUES('$course_id', '$subject_id', '$course_year');";
+        echo $query;
+        $result = $myPdo->query($query);
+        if($result == true)
+        {
+            return true;
+        }
+        return false;
+    }
+    catch(PDOException $e)
+    {
+        echo 'Connection failed: ' . $e->getMessage();
+        return false;
+    }
+    return false;
+}
+
+function course_subjects($course_id)
+{
+    try {
+        $myPdo = new PDO('mysql:host=localhost;dbname=university_data', 'root', 'RameshAdapa@1');
+        $query = "SELECT sbj.subject_name FROM subjects_table sbj, courses_table course, course_subject_table cst
+        WHERE course.course_id = cst.course_id AND sbj.subject_id = cst.subject_id AND course.course_id = $course_id;";
+        $result = $myPdo->query($query);
+        return $result;
+    }
+    catch(PDOException $e)
+    {
+        echo 'Connection failed: ' . $e->getMessage();
+        return false;
+    }
+}
 ?>

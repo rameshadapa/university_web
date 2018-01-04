@@ -94,7 +94,7 @@ $departments = all_departments();
   <a class="active" href="DeptAdd.php">Department</a>
   <a href="CourseAdd.php">Course</a>
   <a href="SubjectAdd.php">Subject</a>
-  
+  <a href="SubjectsToCourse.php">Course subjects</a>
 </div>
 </td>
 </tr>

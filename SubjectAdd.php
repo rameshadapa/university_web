@@ -93,6 +93,7 @@ $subjects = all_subjects();
   <a  href="DeptAdd.php">Department</a>
   <a  href="CourseAdd.php">Course</a>
   <a class="active" href="SubjectAdd.php">Subject</a>
+  <a href="SubjectsToCourse.php">Course subjects</a>
 </div>
 </td>
 </tr>

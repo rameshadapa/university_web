@@ -125,7 +125,8 @@ $courses = all_courses();
   <a  href="DeptAdd.php">Department</a>
   <a class="active" href="CourseAdd.php">Course</a>
   <a href="SubjectAdd.php">Subject</a>
-  
+  <a href="SubjectsToCourse.php">Course subjects</a>
+
 </div>
 </td></tr>
 <?php if($courses) { ?>
