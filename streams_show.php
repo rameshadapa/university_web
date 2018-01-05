@@ -4,7 +4,13 @@ WHERE dpt.department_id=course.department_id AND course.course_id = cst.course_i
 <?php
 include_once("utility_config.php");
 $subjects = all_subjects();
-$rowsCount = mysql_num_rows($subjects);
+$subjectsVal = array();
+$rowsCount = 0;
+
+while($row = $subjects->fetch()) {
+    $subjectsVal[] = $row;
+    $rowsCount = $rowsCount + 1;
+}
 if($rowsCount>0) {
 ?>
 <table width="100%" height="391" border="1" bgcolor="#000060">

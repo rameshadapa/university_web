@@ -112,11 +112,6 @@ $courses = all_courses();
     </table>
   </form>
   </div>
-
-
-
-
-
 <table width="100%" border="1">
 <tr>
 <td>
