@@ -14,14 +14,55 @@ if(isset($_POST['sbj']))
 {
   $subject_stream = $_POST['sbj'];
 }
+$dept = all_departments();
 $subjects = all_subjects();
+$courses = all_courses();
 ?>
 <form method="post" action="<?=$_SERVER['PHP_SELF'];?>">
 <table width="100%" border="0" bgcolor="#000035" >
   <tr>
-    <th scope="col"><h1>ViewTutorial</h1>
-    <p align="left">Subject
-      <label for="sbj"></label>
+  <th width="19%" height="49" scope="col">Department 
+    <select name="Dtype">
+      <option value="0" selected>-Select-</option>
+      <?php
+        while($row = $dept->fetch())
+        { ?>
+          <option value='<?=$row[0];?>' ><?=$row[1];?></option> 
+   <?php }
+      ?>
+    </select></th>
+    <th width="13%" scope="col">
+    <p align="left">Course
+      <select name="course" id="course">
+        <option value="-1">Select Course</option>
+        <?php
+          while($row = $courses->fetch())
+          { ?>
+            <option value='<?=$row[0];?>' ><?=$row[1];?></option>
+    <?php }
+        ?>
+      </select>
+    </p>
+    </th>
+    <th width="10%" scope="col">Year
+      <select name="year">
+        <option value="-1" selected>select..</option>
+        <option value="1year">1year</option>
+        <option value="1-1">1-1sem</option>
+        <option value="1-2">1-2sem</option>
+        <option value="2year">2year</option>
+        <option value="2-1">2-1sem</option>
+        <option value="2-2">2-2sem</option>
+        <option value="3year">3year</option>
+        <option value="3-1">3-1sem</option>
+        <option value="3-2">3-2sem</option>
+        <option value="4year">4year</option>
+        <option value="4-1">4-1sem</option>
+        <option value="4-2">4-2sem</option>
+      </select>
+    </th>
+    <th width="11%" scope="col">
+      <p>Subject 
       <select name="sbj" id="sbj">
         <option value="-1">select</option>
         <?php
@@ -32,22 +73,13 @@ $subjects = all_subjects();
           }
         ?>
       </select>
-      <input type="submit" name="submit" id="submit" value="Submit" size="10" />
-  </p></th>
+      </p>
+    </th>
   </tr>
   <tr>
-    <th height="407" scope="col"><table width="100%" height="391" border="1" bgcolor="#000060">
-      <tr>
-        <th width="80%" scope="col">Streams</th>
-      </tr>
-      <tr>
-        <?php if(isset($subject_stream) && $subject_stream != "") { ?>
-          <td><iframe width="800" height="500" src="<?=$subject_stream;?>" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe></td>
-        <?php } else { ?>
-        <td>No streams available.</td>
-        <?php } ?>
-      </tr>
-    </table></th>
+  <th height="407" scope="col" colspan=4>
+    <div id="streams_view">E-Learning streams available here.</div>
+  </th>
   </tr>
 </table>
 </body>
