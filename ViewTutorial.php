@@ -6,8 +6,33 @@
 <style>
 table{color:#FFFFFF;}
 </style>
+<script type="text/javascript">
+function showSubjs()
+{
+  // if(comboValue == "")
+  // {
+  //   document.getElementById("course_details").innerHTML = "";
+  //   return ;
+  // }
+  if (window.XMLHttpRequest) {
+    // Code for IE7+, Firefox, Chrome, Opera, Safari.
+    xmlHttp = new XMLHttpRequest();
+  } else {
+    // Code for IE6, IE5
+    xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+  }
+  xmlHttp.onreadystatechange = function() {
+    if(this.readyState == 4 && this.status == 200) {
+      document.getElementById("streams_view").innerHTML = this.responseText;
+    }
+  };
+  // var options = course.getElementsByTagName("option");
+  xmlHttp.open("GET", "streams_show.php?msg=streams", true);
+  xmlHttp.send();
+}
+</script>
 </head>
-<body bgcolor="#000035">
+<body bgcolor="#000035" onload="showSubjs()">
 <?php
 include_once("utility_config.php");
 if(isset($_POST['sbj']))
