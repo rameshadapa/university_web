@@ -355,9 +355,7 @@ function course_subject_add($course_id, $subject_id, $course_year)
 {
     try {
         $myPdo = new PDO('mysql:host=localhost;dbname=university_data', 'root', 'RameshAdapa@1');
-        $query = "INSERT INTO course_subject_table(course_id, subject_id, course_year)
-        VALUES('$course_id', '$subject_id', '$course_year');";
-        echo $query;
+        $query = "INSERT INTO course_subject_table(course_id, subject_id, course_year) VALUES('$course_id', '$subject_id', '$course_year');";
         $result = $myPdo->query($query);
         if($result == true)
         {
