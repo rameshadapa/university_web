@@ -1,5 +1,15 @@
 <!DOCTYPE html>
 <html>
+<head>
+<style>
+    iframe{
+        alignment-adjust:central;
+        background-color:#fff;
+        width:80%;
+        height:100%
+    }
+</style>
+</head>
 <body>
 <?php
 include_once("utility_config.php");
