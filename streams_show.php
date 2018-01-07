@@ -33,7 +33,7 @@ if($rowCount > 0) {
                 $row = $subjectsVal[$x];
                 if($row[2] != null && $row[2] != "") {
         ?>
-                    <td><iframe width="800" height="500" src="<?=$subject_stream;?>" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe></td>
+                    <td><iframe width="800" height="500" src="<?=$row[2];?>" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe></td>
         <?php
                 }
             } ?>

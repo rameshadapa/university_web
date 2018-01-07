@@ -102,9 +102,9 @@ $courses = all_courses();
     </th>
   </tr>
   <tr>
-  <th height="407" scope="col" colspan=4>
-    <div id="streams_view">E-Learning streams available here.</div>
-  </th>
+    <td height=auto scope="col" colspan="4">
+      <div id="streams_view">E-Learning streams available here.</div>
+    </td>
   </tr>
 </table>
 </body>
