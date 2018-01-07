@@ -38,12 +38,12 @@ var arr = [];
 function courseChange(Dtype)
 {
   var comboValue = Dtype.value;
-  document.forms["subjectstreams"].elements["SC"].options.length=0;
+  document.forms["subjectstreams"].elements["course"].options.length=0;
   for (var k in arr[comboValue]){
     var option = document.createElement("option");
     option.setAttribute('value',k);
     option.innerHTML = arr[comboValue][k];
-    document.forms["subjectstreams"].elements["SC"].appendChild(option);
+    document.forms["subjectstreams"].elements["course"].appendChild(option);
   }
 }
 function showSubjs()
