@@ -6,6 +6,8 @@
 <style>
 table{color:#FFFFFF;}
 </style>
+<script type="text/javascript">
+var arr = [];
 <?php
 include_once("utility_config.php");
 if(isset($_POST['sbj']))
@@ -33,8 +35,6 @@ if($courses)
 }
 
 ?>
-<script type="text/javascript">
-var arr = [];
 function courseChange(Dtype)
 {
   var comboValue = Dtype.value;
