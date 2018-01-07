@@ -5,8 +5,8 @@
     iframe{
         alignment-adjust:central;
         background-color:#fff;
-        width:80%;
-        height:100%
+        width:800px;
+        height:500px;
     }
 </style>
 </head>
