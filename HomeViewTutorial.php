@@ -6,7 +6,46 @@
 <style>
 table{color:#FFFFFF;}
 </style>
+<?php
+include_once("utility_config.php");
+if(isset($_POST['sbj']))
+{
+  $subject_stream = $_POST['sbj'];
+}
+$dept = all_departments();
+$subjects = all_subjects();
+$courses = all_courses();
+if($courses)
+{
+  while($row = $courses->fetch())
+  { ?>
+    if(arr.hasOwnProperty('<?=$row[4];?>'))
+    {
+      arr['<?=$row[4];?>']['<?=$row[0];?>'] = '<?=$row[1];?>';
+    }
+    else
+    {
+      var h = new Object();
+      h['<?=$row[0];?>'] = '<?=$row[1];?>';
+      arr['<?=$row[4];?>'] = h;
+    }
+<?php }
+}
+
+?>
 <script type="text/javascript">
+var arr = [];
+function courseChange(Dtype)
+{
+  var comboValue = Dtype.value;
+  document.forms["subjectstreams"].elements["SC"].options.length=0;
+  for (var k in arr[comboValue]){
+    var option = document.createElement("option");
+    option.setAttribute('value',k);
+    option.innerHTML = arr[comboValue][k];
+    document.forms["subjectstreams"].elements["SC"].appendChild(option);
+  }
+}
 function showSubjs()
 {
   // if(comboValue == "")
@@ -33,21 +72,11 @@ function showSubjs()
 </script>
 </head>
 <body bgcolor="#000035" onload="showSubjs()">
-<?php
-include_once("utility_config.php");
-if(isset($_POST['sbj']))
-{
-  $subject_stream = $_POST['sbj'];
-}
-$dept = all_departments();
-$subjects = all_subjects();
-$courses = all_courses();
-?>
-<form method="post" action="<?=$_SERVER['PHP_SELF'];?>">
+<form method="post" name="subjectstreams" id="subjectstreams" action="<?=$_SERVER['PHP_SELF'];?>">
 <table width="100%" border="0" bgcolor="#000035" >
   <tr>
   <th width="19%" height="49" scope="col">Department 
-    <select name="Dtype">
+    <select name="Dtype" onChange="courseChange(this)">
       <option value="0" selected>-Select-</option>
       <?php
         while($row = $dept->fetch())
