@@ -8,14 +8,22 @@ if(isset($_GET['dept_id']) && isset($_GET['course_id']))
 
     $result = course_details($dept_id, $course_id);
     echo "<option value='-1'>select..</option>";
-    if($row = $result->fetch())
+    if($result)
     {
-        for($idx = 0; $idx < $row[2]; $idx++)
+        if($row = $result->fetch())
         {
-            echo "<option value='$idx'>$idx</option>";
+            for($idx = 0; $idx < $row[2]; $idx++)
+            {
+                echo "<option value='$idx'>$idx</option>";
+            }
+        } else {
+            echo "Results are empty.";
         }
+    } else {
+        echo "No results found.";
     }
 } else {
+    echo "Invalid request.";
     echo "<option value='-1'>select..</option>";
 }
 ?>

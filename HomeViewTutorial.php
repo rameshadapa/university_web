@@ -49,10 +49,9 @@ function courseChange(Dtype)
 }
 function courseYear(course)
 {
-  var deptVal = document.forms["subjectstreams"].elements["Dtype"].options.value;
+  var dept = document.forms["subjectstreams"].elements["Dtype"];
   var courseVal = course.value;
-  alert(deptVal);
-  alert(courseVal);
+  var deptVal = dept.options[dept.selectedIndex].value;
   if (window.XMLHttpRequest) {
     // Code for IE7+, Firefox, Chrome, Opera, Safari.
     xmlHttp = new XMLHttpRequest();
@@ -62,7 +61,8 @@ function courseYear(course)
   }
   xmlHttp.onreadystatechange = function() {
     if(this.readyState == 4 && this.status == 200) {
-      document.getElementById("year").innerHTML = this.responseText;
+      alert(this.responseText);
+      document.forms["subjectstreams"].elements["year"].innerHTML = this.responseText;
     }
   };
   // var options = course.getElementsByTagName("option");
@@ -99,7 +99,7 @@ function showSubjs()
 <table width="100%" border="0" bgcolor="#000035" >
   <tr>
   <th width="19%" height="49" scope="col">Department 
-    <select name="Dtype" onChange="courseChange(this)">
+    <select name="Dtype" id="Dtype" onChange="courseChange(this)">
       <option value="0" selected>-Select-</option>
       <?php
         while($row = $dept->fetch())
