@@ -77,8 +77,6 @@ function courseYearSubj(year)
   var course = document.forms["subjectstreams"].elements["course"];
   var courseYr = year.value;
   var courseVal = course.options[course.selectedIndex].value;
-  alert(courseYr);
-  alert(courseVal);
   if (window.XMLHttpRequest) {
     // Code for IE7+, Firefox, Chrome, Opera, Safari.
     xmlHttp = new XMLHttpRequest();
@@ -88,7 +86,6 @@ function courseYearSubj(year)
   }
   xmlHttp.onreadystatechange = function() {
     if(this.readyState == 4 && this.status == 200) {
-      alert(this.responseText);
       document.forms["subjectstreams"].elements["sbj"].innerHTML = this.responseText;
     }
   };
@@ -96,8 +93,13 @@ function courseYearSubj(year)
   xmlHttp.open("GET", "course_year_subj.php?course_id="+courseVal+"&year="+courseYr, true);
   xmlHttp.send();
 }
-function showSubjs()
+function showSubjs(subject)
 {
+  var resource = subject.value;
+  if(resource == "-1")
+  {
+    return ;
+  }
   // if(comboValue == "")
   // {
   //   document.getElementById("course_details").innerHTML = "";
@@ -116,7 +118,7 @@ function showSubjs()
     }
   };
   // var options = course.getElementsByTagName("option");
-  xmlHttp.open("GET", "streams_show.php", true);
+  xmlHttp.open("GET", "streams_show.php?resource="+resource, true);
   xmlHttp.send();
 }
 </script>
@@ -155,7 +157,7 @@ function showSubjs()
     </th>
     <th width="11%" scope="col">
       <p>Subject 
-      <select name="sbj" id="sbj">
+      <select name="sbj" id="sbj" onChange="showSubjs(this)">
         <option value="-1">select</option>
         <?php
           while($row = $subjects->fetch())
