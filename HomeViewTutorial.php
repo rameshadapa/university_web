@@ -77,6 +77,8 @@ function courseYearSubj(year)
   var course = document.forms["subjectstreams"].elements["course"];
   var courseYr = year.value;
   var courseVal = course.options[course.selectedIndex].value;
+  alert(courseYr);
+  alert(courseVal);
   if (window.XMLHttpRequest) {
     // Code for IE7+, Firefox, Chrome, Opera, Safari.
     xmlHttp = new XMLHttpRequest();
