@@ -402,7 +402,7 @@ function course_years($course_id)
     }
     return false;
 }
-function course_year_subjects($dept_id, $course_id, $year)
+function course_year_subjects($course_id, $year)
 {
     try {
         $myPdo = new PDO('mysql:host=localhost;dbname=university_data', 'root', 'RameshAdapa@1');
