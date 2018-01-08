@@ -40,6 +40,10 @@ function courseChange(Dtype)
 {
   var comboValue = Dtype.value;
   document.forms["subjectstreams"].elements["course"].options.length=0;
+  var opt = document.createElement("option");
+  opt.setAttribute('value', -1);
+  opt.innerHTML = "select..";
+  document.forms["subjectstreams"].elements["course"].appendChild(opt);
   for (var k in arr[comboValue]){
     var option = document.createElement("option");
     option.setAttribute('value',k);

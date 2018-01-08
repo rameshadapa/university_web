@@ -12,7 +12,7 @@ if(isset($_GET['dept_id']) && isset($_GET['course_id']))
     {
         if($row = $result->fetch())
         {
-            for($idx = 0; $idx < $row[2]; $idx++)
+            for($idx = 0; $idx < $row[0]; $idx++)
             {
                 echo "<option value='$idx'>$idx</option>";
             }
