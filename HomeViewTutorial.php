@@ -8,6 +8,7 @@ table{color:#FFFFFF;}
 </style>
 <script type="text/javascript">
 var arr = [];
+arr['-1'] = [['select..']]
 <?php
 include_once("utility_config.php");
 if(isset($_POST['sbj']))
@@ -45,6 +46,28 @@ function courseChange(Dtype)
     option.innerHTML = arr[comboValue][k];
     document.forms["subjectstreams"].elements["course"].appendChild(option);
   }
+}
+function courseYear(course)
+{
+  var deptVal = document.forms["subjectstreams"].elements["Dtype"].options.value;
+  var courseVal = course.value;
+  alert(deptVal);
+  alert(courseVal);
+  if (window.XMLHttpRequest) {
+    // Code for IE7+, Firefox, Chrome, Opera, Safari.
+    xmlHttp = new XMLHttpRequest();
+  } else {
+    // Code for IE6, IE5
+    xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+  }
+  xmlHttp.onreadystatechange = function() {
+    if(this.readyState == 4 && this.status == 200) {
+      document.getElementById("year").innerHTML = this.responseText;
+    }
+  };
+  // var options = course.getElementsByTagName("option");
+  xmlHttp.open("GET", "course_year.php?dept_id="+deptVal+"&course_id="+courseVal, true);
+  xmlHttp.send();
 }
 function showSubjs()
 {
@@ -87,7 +110,7 @@ function showSubjs()
     </select></th>
     <th width="13%" scope="col">
     <p align="left">Course
-      <select name="course" id="course">
+      <select name="course" id="course" onChange="courseYear(this)">
         <option value="-1">Select Course</option>
         <?php
           while($row = $courses->fetch())
@@ -99,20 +122,8 @@ function showSubjs()
     </p>
     </th>
     <th width="10%" scope="col">Year
-      <select name="year">
+      <select name="year" id="year">
         <option value="-1" selected>select..</option>
-        <option value="1year">1year</option>
-        <option value="1-1">1-1sem</option>
-        <option value="1-2">1-2sem</option>
-        <option value="2year">2year</option>
-        <option value="2-1">2-1sem</option>
-        <option value="2-2">2-2sem</option>
-        <option value="3year">3year</option>
-        <option value="3-1">3-1sem</option>
-        <option value="3-2">3-2sem</option>
-        <option value="4year">4year</option>
-        <option value="4-1">4-1sem</option>
-        <option value="4-2">4-2sem</option>
       </select>
     </th>
     <th width="11%" scope="col">
