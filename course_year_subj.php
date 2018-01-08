@@ -1,21 +1,19 @@
 <?php
 include_once("utility_config.php");
 
-if(isset($_GET['dept_id']) && isset($_GET['course_id']))
+if(isset($_GET['course_id']) && isset($_GET['year']))
 {
-    $dept_id = $_GET['dept_id'];
+//    $dept_id = $_GET['dept_id'];
     $course_id = $_GET['course_id'];
+    $year = $_GET['year'];
 
-    $result = course_years($course_id);
+    $result = course_year_subjects($dept_id, $course_id, $year);
     echo "<option value='-1'>select..</option>";
     if($result)
     {
         if($row = $result->fetch())
         {
-            for($idx = 0; $idx < $row[0]; $idx++)
-            {
-                echo "<option value='$idx'>$idx</option>";
-            }
+            echo "<option value='$row[0]'>$row[1]</option>";
         }
     }
 } else {

@@ -402,4 +402,19 @@ function course_years($course_id)
     }
     return false;
 }
+function course_year_subjects($dept_id, $course_id, $year)
+{
+    try {
+        $myPdo = new PDO('mysql:host=localhost;dbname=university_data', 'root', 'RameshAdapa@1');
+        $query = "SELECT sbj.subject_resources, sbj.subject_name FROM subjects_table sbj, courses_table course, course_subject_table cst
+        WHERE course.course_id = cst.course_id AND sbj.subject_id = cst.subject_id AND course.course_id = $course_id AND cst.course_year=$year;";
+        $result = $myPdo->query($query);
+        return $result;
+    }
+    catch(PDOException $e)
+    {
+        echo 'Connection failed: ' . $e->getMessage();
+        return false;
+    }
+}
 ?>

@@ -65,12 +65,33 @@ function courseYear(course)
   }
   xmlHttp.onreadystatechange = function() {
     if(this.readyState == 4 && this.status == 200) {
-      alert(this.responseText);
       document.forms["subjectstreams"].elements["year"].innerHTML = this.responseText;
     }
   };
   // var options = course.getElementsByTagName("option");
   xmlHttp.open("GET", "course_year.php?dept_id="+deptVal+"&course_id="+courseVal, true);
+  xmlHttp.send();
+}
+function courseYearSubj(year)
+{
+  var course = document.forms["subjectstreams"].elements["course"];
+  var courseYr = year.value;
+  var courseVal = course.options[course.selectedIndex].value;
+  if (window.XMLHttpRequest) {
+    // Code for IE7+, Firefox, Chrome, Opera, Safari.
+    xmlHttp = new XMLHttpRequest();
+  } else {
+    // Code for IE6, IE5
+    xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+  }
+  xmlHttp.onreadystatechange = function() {
+    if(this.readyState == 4 && this.status == 200) {
+      alert(this.responseText);
+      document.forms["subjectstreams"].elements["sbj"].innerHTML = this.responseText;
+    }
+  };
+  // var options = course.getElementsByTagName("option");
+  xmlHttp.open("GET", "course_year_subj.php?course_id="+courseVal+"&year="+courseYr, true);
   xmlHttp.send();
 }
 function showSubjs()
@@ -98,7 +119,7 @@ function showSubjs()
 }
 </script>
 </head>
-<body bgcolor="#000035" onload="showSubjs()">
+<body bgcolor="#000035">
 <form method="post" name="subjectstreams" id="subjectstreams" action="<?=$_SERVER['PHP_SELF'];?>">
 <table width="100%" border="0" bgcolor="#000035" >
   <tr>
@@ -126,7 +147,7 @@ function showSubjs()
     </p>
     </th>
     <th width="10%" scope="col">Year
-      <select name="year" id="year">
+      <select name="year" id="year" onChange="courseYearSubj(this)">
         <option value="-1" selected>select..</option>
       </select>
     </th>
