@@ -386,4 +386,20 @@ function course_subjects($course_id)
         return false;
     }
 }
+
+function course_years($course_id)
+{
+    try {
+        $myPdo = new PDO('mysql:host=localhost;dbname=university_data', 'root', 'RameshAdapa@1');
+        $query = "SELECT course_duration FROM courses_table WHERE course_id=$course_id;";
+        $result = $myPdo->query($query);
+        return $result;
+    }
+    catch(PDOException $e)
+    {
+        echo 'Connection failed: ' . $e->getMessage();
+        return false;
+    }
+    return false;
+}
 ?>
