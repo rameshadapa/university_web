@@ -12,10 +12,6 @@ img:hover{
 table{
 color:#FFF;
 }
-img{
-	border-radius:90%;
-	
-}
 iframe{
 	width:80%;
 	height:90%;
